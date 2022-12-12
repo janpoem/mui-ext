@@ -1,0 +1,22 @@
+{
+  "name": "@mui-ext/core",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev:start": "ts-node src/index.ts",
+    "test": "mocha",
+    "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
+    "build": "rollup -c --bundleConfigAsCjs",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@mui-ext/hookform",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev:start": "ts-node src/index.ts",
+    "test": "mocha",
+    "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
+    "build": "npm run lint && npm run test && tsc",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@mui-ext/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0"
+  }
+}
