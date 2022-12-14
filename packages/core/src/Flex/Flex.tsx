@@ -1,6 +1,7 @@
-import styled, { StyledComponent } from '@emotion/styled';
+import { StyledComponent } from '@emotion/styled';
+import { styled } from '@mui/material';
 import { ReactNode } from 'react';
-import { HtmlComponentProps } from '../utils';
+import { MuiComponentProps } from '../utils';
 import { FlexChild, FlexChildProps } from './FlexChild';
 import { AlignItems, useFlexGap, useJustifyContent, JustifyContent } from './hooks';
 
@@ -8,7 +9,7 @@ export type FlexProps = {
   inline?: boolean,
   col?: boolean,
   rev?: boolean,
-  justify?: JustifyContent | undefined | null,
+  justify?: JustifyContent,
   items?: AlignItems,
   gap?: number | string | null,
   children?: ReactNode | ReactNode[],
@@ -16,9 +17,9 @@ export type FlexProps = {
   wrap?: boolean,
 } & FlexChildProps;
 
-export const Flex: StyledComponent<HtmlComponentProps<FlexProps>> = styled(FlexChild, {
-  shouldForwardProp: (props) => !['inline', 'col', 'rev', 'justify', 'items', 'gap', 'hide', 'wrap'].includes(props),
-})(({
+export const Flex: StyledComponent<MuiComponentProps<FlexProps>> = styled(FlexChild, {
+  shouldForwardProp: (props) => !['inline', 'col', 'rev', 'justify', 'items', 'gap', 'hide', 'wrap', 'sx'].includes(props as string),
+})<FlexProps>(({
   inline,
   col,
   rev,
@@ -35,4 +36,3 @@ export const Flex: StyledComponent<HtmlComponentProps<FlexProps>> = styled(FlexC
   alignItems    : items,
   flexWrap      : wrap ? 'wrap' : undefined,
 }));
-
