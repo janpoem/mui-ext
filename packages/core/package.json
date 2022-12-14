@@ -14,6 +14,19 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "react-is": "^18",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-is": "^17",
+    "clsx": "^1.2.1",
+    "csstype": "^3",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@mui/icons-material": "^5",
+    "@mui/material": "^5",
+    "@mui/styles": "^5"
   },
   "peerDependencies": {
     "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
