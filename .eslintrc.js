@@ -23,6 +23,7 @@ module.exports = {
     '*.config.*',
     'dist',
     '*.stories.tsx',
+    '*.stories.ts',
     '*.stories.mdx',
   ],
   rules         : {
