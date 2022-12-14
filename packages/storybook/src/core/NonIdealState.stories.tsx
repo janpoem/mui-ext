@@ -3,7 +3,7 @@ import { Flex, NonIdealState } from '@mui-ext/core';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
-  title     : '@mui-ext-core/NonIdealState',
+  title     : 'core/NonIdealState',
   component : NonIdealState,
   // parameters: {
   //   controls: {

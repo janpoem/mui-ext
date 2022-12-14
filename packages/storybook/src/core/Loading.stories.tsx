@@ -4,7 +4,7 @@ import { Flex, Loading } from '@mui-ext/core';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
-  title     : '@mui-ext-core/Loading',
+  title     : 'core/Loading',
   component : Loading,
   // parameters: {
   //   controls: {

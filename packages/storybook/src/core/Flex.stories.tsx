@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Color from 'color';
-import { Flex, FlexChild, justifyContentShorten } from '@mui-ext/core';
+import { Flex, FlexChild } from '@mui-ext/core';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
-  title    : '@mui-ext-core/Flex',
+  title    : 'core/Flex',
   component: Flex,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     inline : { description: '行内', defaultValue: undefined, control: 'select', options: [undefined, true, false] },
     col    : { description: '列', defaultValue: undefined, control: 'select', options: [undefined, true, false] },

@@ -3,7 +3,7 @@ import { Aspect, Flex } from '@mui-ext/core';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
-  title    : '@mui-ext-core/Aspect',
+  title    : 'core/Aspect',
   component: Aspect,
   argTypes : {
     ratio  : { control: 'text', defaultValue: '16/9' },
