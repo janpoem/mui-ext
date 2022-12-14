@@ -3,16 +3,24 @@
  * @param v - 要检查的值
  */
 export const isNumeric = (v: unknown): boolean => {
+  if (Array.isArray(v)) return false;
   return !isNaN(parseFloat(v as string)) && isFinite(v as number);
 };
 
 /**
  * 过滤 value 为整型值
  * @param value -
- * @param dft - 默认值，这里不会检查该值是否为一个 int ，请确保该值为一个整型
+ * @param dft - 默认值，这里不会检查该值是否为一个 int ，请确保该值为 number 类型
  */
-export const filterInt = (value: unknown, dft = 0): number =>
-  !isNumeric(value) ? dft : parseInt(value as string);
+export const filterNumeric = (value: unknown, dft = 0): number => {
+  if (typeof value === 'boolean') {
+    return value ? 1 : 0;
+  }
+  if (!isNumeric(value)) return dft;
+  // try return value as original
+  if (typeof value === 'number') return value;
+  return parseFloat(value as string);
+};
 
 /**
  * 以最小值过滤 value 为整型值
@@ -20,8 +28,8 @@ export const filterInt = (value: unknown, dft = 0): number =>
  * @param min - 最小值
  * @param dft - 默认值
  */
-export const filterIntWithMin = (value: unknown, min: number, dft = 0): number => {
-  const v = filterInt(value, dft);
+export const filterNumericWithMin = (value: unknown, min: number, dft = 0): number => {
+  const v = filterNumeric(value, dft);
   return v < min ? min : v;
 };
 
@@ -31,8 +39,8 @@ export const filterIntWithMin = (value: unknown, min: number, dft = 0): number =
  * @param max - 最大值
  * @param dft - 默认值
  */
-export const filterIntWithMax = (value: unknown, max: number, dft = 0): number => {
-  const v = filterInt(value, dft);
+export const filterNumericWithMax = (value: unknown, max: number, dft = 0): number => {
+  const v = filterNumeric(value, dft);
   return v > max ? max : v;
 };
 
@@ -43,8 +51,8 @@ export const filterIntWithMax = (value: unknown, max: number, dft = 0): number =
  * @param max - 最大值
  * @param dft - 默认值
  */
-export const filterIntWithMinMax = (value: unknown, min: number, max: number, dft = 0): number => {
-  const v = filterInt(value, dft);
+export const filterNumericWithMinMax = (value: unknown, min: number, max: number, dft = 0): number => {
+  const v = filterNumeric(value, dft);
   return v < min ? min : (v > max ? max : v);
 };
 
@@ -55,7 +63,7 @@ export function random(min: number, max: number): number {
 }
 
 // https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Math/round
-export function decimalAdjust(
+function decimalAdjust(
   type: 'round' | 'ceil' | 'floor',
   value: number,
   exp?: number,
@@ -82,6 +90,9 @@ export function decimalAdjust(
   return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
 }
 
+// exp 表示精确位数，
+// < 0 时，表示浮点精度
+// > 0 时，表示个十百千位（即往上取舍）
 export const round10 = (value: number, exp?: number): number => decimalAdjust('round', value, exp);
 export const floor10 = (value: number, exp?: number): number => decimalAdjust('floor', value, exp);
 export const ceil10 = (value: number, exp?: number): number => decimalAdjust('ceil', value, exp);

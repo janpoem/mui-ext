@@ -1,4 +1,6 @@
-import React, {
+import { SxProps } from '@mui/material';
+import { Theme } from '@mui/material/styles';
+import {
   ReactElement,
   ReactNode,
   cloneElement,
@@ -21,6 +23,11 @@ export type HtmlComponentProps<P = any> = {
   style?: CSSProperties | undefined,
   className?: string | undefined,
 } & P;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type MuiComponentProps<P = any> = HtmlComponentProps<{
+  sx?: SxProps<Theme>
+}> & P;
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type ComponentOrElement<P = {}> = ReactComponent<P> | ReactElement<P>;
