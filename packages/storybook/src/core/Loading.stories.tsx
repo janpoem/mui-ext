@@ -1,4 +1,4 @@
-import { Box, Button, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import * as React from 'react';
 import { Flex, Loading } from '@mui-ext/core';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
@@ -6,11 +6,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 export default {
   title     : '@mui-ext-core/Loading',
   component : Loading,
-  parameters: {
-    controls: {
-      exclude: /(render|placeholder|children)/g,
-    },
-  },
+  // parameters: {
+  //   controls: {
+  //     exclude: /(render|placeholder|children)/g,
+  //   },
+  // },
   argTypes  : {
     loading: { control: 'boolean', defaultValue: true },
     text   : { control: 'text' },

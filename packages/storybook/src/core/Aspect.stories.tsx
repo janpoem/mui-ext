@@ -27,7 +27,7 @@ export const Basic = Template.bind({});
 Basic.args = {
   bgColor: 'pink',
   bg     : 'https://pic.rmb.bdstatic.com/bjh/news/385a6b48583b30946d70f66369273037.jpeg',
-  style  : {
+  sx     : {
     borderRadius: '1em',
   },
 };
