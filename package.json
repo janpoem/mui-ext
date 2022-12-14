@@ -50,6 +50,7 @@
     "@emotion/styled": "^11",
     "@mui/icons-material": "^5",
     "@mui/material": "^5",
-    "@mui/styles": "^5"
+    "@mui/styles": "^5",
+    "notistack": "^2"
   }
 }
