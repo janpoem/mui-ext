@@ -1,8 +1,8 @@
 import { ComponentProps } from 'react';
-import { StyledComponent } from '@emotion/styled';
 import { styled } from '@mui/material';
+import { StyledComponent } from '@mui/styles';
 import { Property } from 'csstype';
-import { HtmlComponentProps } from '../utils';
+import { MuiComponentProps } from '../utils';
 import { FlexGrowShrink, useFlexGrowShrink } from './hooks';
 
 export type FlexChildProps = {
@@ -11,7 +11,7 @@ export type FlexChildProps = {
   basis?: Property.FlexBasis | number,
 } & ComponentProps<'div'>
 
-export const FlexChild: StyledComponent<HtmlComponentProps<FlexChildProps>> = styled('div', {
+export const FlexChild: StyledComponent<MuiComponentProps<FlexChildProps>> = styled('div', {
   shouldForwardProp: (props) => !['grow', 'shrink', 'basis', 'sx'].includes(props as string),
 })<FlexChildProps>(({
   grow,
