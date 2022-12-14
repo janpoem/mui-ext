@@ -1,0 +1,24 @@
+{
+  "name": "@mui-ext/storybook",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "start-storybook -p 6006",
+    "sb-build": "build-storybook",
+    "sb-build:swc": "BUILD_TOOL=swc build-storybook"
+  },
+  "dependencies": {
+    "color": "^4.2.3",
+    "@types/color": "^3",
+    "@storybook/addon-a11y": "^6",
+    "@storybook/addon-essentials": "^6",
+    "@storybook/addon-links": "^6",
+    "@storybook/addon-docs": "^6",
+    "@storybook/builder-webpack5": "^6",
+    "@storybook/manager-webpack5": "^6",
+    "@storybook/react": "^6",
+    "@storybook/testing-library": "*",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "storybook-addon-swc": "*",
+    "webpack": "^5"
+  }
+}
