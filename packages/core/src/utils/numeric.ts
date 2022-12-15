@@ -63,7 +63,7 @@ export function random(min: number, max: number): number {
 }
 
 // https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Math/round
-function decimalAdjust(
+export function decimalAdjust(
   type: 'round' | 'ceil' | 'floor',
   value: number,
   exp?: number,

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { filterNumeric, isNumeric } from '../utils';
 
 export type JustifyContent = 'center' | 'start' | 'end' | 'between' | 'around' | 'evenly' | undefined
-export type AlignItems = 'auto' | 'start' | 'end' | 'center' | 'stretch';
+export type AlignItems = 'auto' | 'start' | 'end' | 'center' | 'stretch' | 'baseline' | 'normal';
 export type AlignSelf = 'auto' | 'start' | 'end' | 'center' | 'stretch';
 
 export type FlexGrowShrink = boolean | number | undefined | null;
