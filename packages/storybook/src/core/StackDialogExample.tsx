@@ -29,6 +29,7 @@ export function StackDialogExample() {
             <Button
               onClick={() => setValue(prev => prev + 1)}
             >change value: {value}</Button>
+            <Button onClick={() => dialog.alert({ content: `ok - ${value}` })}>Show another dialog</Button>
           </div>
         );
       },
