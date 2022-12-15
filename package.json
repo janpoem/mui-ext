@@ -17,7 +17,20 @@
   "private": false,
   "license": "MIT",
   "dependencies": {
-
+    "react": "^18",
+    "react-dom": "^18",
+    "react-is": "^18",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-is": "^17",
+    "clsx": "^1.2.1",
+    "csstype": "^3",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@mui/icons-material": "^5",
+    "@mui/material": "^5",
+    "@mui/styles": "^5",
+    "notistack": "^2"
   },
   "devDependencies": {
     "@types/node": "^16",
@@ -37,25 +50,11 @@
     "@types/mocha": "^10",
     "chai": "^4",
     "@types/chai": "^4",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-is": "^18",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@types/react-is": "^17",
-    "clsx": "^1.2.1",
     "@testing-library/react": "^13",
     "inject-jsdom": "^1",
     "nyc": "^15.1.0",
     "rollup": "^3.7.2",
     "rollup-plugin-ts": "^3.0.2",
-    "@rollup/plugin-commonjs": "^23",
-    "csstype": "^3",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "@mui/icons-material": "^5",
-    "@mui/material": "^5",
-    "@mui/styles": "^5",
-    "notistack": "^2"
+    "@rollup/plugin-commonjs": "^23"
   }
 }
