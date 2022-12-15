@@ -19,9 +19,10 @@ type BackdropProps = {
 
 const DialogBackdrop = styled('div', {
   shouldForwardProp: (propName: PropertyKey) => !['open'].includes(propName as string),
-})<BackdropProps>(({ open = false }) => ({
+})<BackdropProps>(({ theme, open = false }) => ({
   position      : 'absolute',
-  background    : 'rgba(0, 0, 0, 0.5)',
+  background    : theme.palette.action.disabled,
+  backdropFilter: 'blur(2px)',
   display       : open ? 'flex' : 'none',
   top           : 0,
   left          : 0,
@@ -31,6 +32,7 @@ const DialogBackdrop = styled('div', {
   justifyContent: 'center',
   alignItems    : 'center',
   color         : 'rgba(255, 255, 255, 0.95)',
+  borderRadius  : theme.shape.borderRadius,
 }));
 
 export type StackDialogProps = {
@@ -50,7 +52,7 @@ export function StackDialog({ dialog }: StackDialogProps) {
           keepMounted={!!it.persistent}
           TransitionComponent={it.transition ?? transition}
           maxWidth={dialog.options.maxWidth ?? it.maxWidth}
-          scroll={it.scroll ??  scroll }
+          scroll={it.scroll ?? scroll}
         >
           <DialogBackdrop open={it.loading}>
             <CircularProgress sx={{ color: '#ffffff' }}/>
