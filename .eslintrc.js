@@ -14,6 +14,9 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended'
   ],
+  settings      : {
+    version: 'detect'
+  },
   env           : {
     node : true,
     mocha: true
@@ -24,7 +27,7 @@ module.exports = {
     'dist',
     '*.stories.tsx',
     '*.stories.ts',
-    '*.stories.mdx',
+    '*.stories.mdx'
   ],
   rules         : {
     '@typescript-eslint/ban-ts-comment'    : [
