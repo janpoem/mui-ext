@@ -6,6 +6,8 @@ import { StackDialog, useInitStackDialog } from '@mui-ext/core';
 //   //
 // }
 
+const waiting = (seconds: number): Promise<void> => new Promise<void>(resolve => setTimeout(resolve, seconds * 1000));
+
 export function StackDialogExample() {
   const dialog = useInitStackDialog({});
 
@@ -14,8 +16,8 @@ export function StackDialogExample() {
 
   const click1 = () => {
     dialog.open({
-      title   : 'Example 1',
-      content : function Example1() {
+      title  : 'Example 1',
+      content: function Example1() {
         const [value, setValue] = useState(example1);
 
         useEffect(() => {
@@ -69,12 +71,21 @@ export function StackDialogExample() {
     });
   };
 
+  const click3 = () => {
+    dialog.confirm({
+      title    : 'Example 3',
+      content  : 'click [Confirm] to emit waiting',
+      onConfirm: async () => waiting(2),
+    });
+  };
+
   return (
     <>
       <Box>
         <pre>{JSON.stringify({ example1, example2 }, null, 2)}</pre>
         <Button onClick={() => click1()}>Example 1</Button>
         <Button onClick={() => click2()}>Example 2</Button>
+        <Button onClick={() => click3()}>Dialog Confirm Waiting</Button>
       </Box>
       <StackDialog dialog={dialog}/>
     </>
