@@ -5,18 +5,23 @@ mui 扩展的核心部分（公共组件与 hooks）。
 ## 组件索引
 
 - Loading - 可在任意项目本地化细化配置的公共 Loading 组件
-  - setupLoading
-  - useLoadingText, useLoadingRender
+  - setupLoading, useLoadingConfig
 - Aspect - 按照特定 ratio 来显示特定宽高比的区域，虽然 CSS3 增加了 `aspect-ratio` ，但整体增加了 CSS 操作复杂维度，不如写成 React 组件易于理解和使用
   - AspectOuter, AspectInner
   - useRatio, useRatioStyle
 - Flex - FlexBox，基于 Flex 布局，解决了 CSS 传统布局（position模式和 display: block 模式）很多缺陷和不足，成为目前使用量最大的基础 CSS 属性，逐个逐个 CSS 来写 Flex 实在是既累赘又无意义。 mui 虽然提供了一个 `Stack` 实现类型的功能，然还是单独做一个 Flex 的组件，以便于针对不同平台环境的适配。
   - FlexChild
   - useJustifyContent, useFlexGrowShrink, useFlexGap
+- StackDialog
+  - setupStackDialog, useStackDialogConfig
+  - useInitStackDialog
+- NonIdealState
+  - setupNonIdealState, useNonIdealStateConfig
 
 ## Hooks
 
 - useClsx
+- useSnackbarNotice
 
 ## Utils 
 
