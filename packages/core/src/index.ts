@@ -7,3 +7,4 @@ export * from './Aspect';
 export * from './Loading';
 export * from './NonIdealState';
 export * from './StackDialog';
+export * from './Text';

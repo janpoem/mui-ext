@@ -24,3 +24,36 @@
 2. `tsx` 包含 jsx 语法块的文件，应该至少确保文件引用了 `import React from 'react'`
 3. `styled` 和 `StyledComponent` 不应使用 `emotion` 而应该使用 `mui` ，`import { styled } from '@mui/material'` `import { StyledComponent } from '@mui/styles'`，这两者所包含的上下文略有区别
 4. build 输出物，应该检查，是否存在不必要的输出内容（如多余的引用，或者 `.d.ts` 引入了不必要的类型）。
+
+## styled 组件使用的问题
+
+在 projectA 中定义了 `StyledA: StyledComponent` (projectA 声明了 emotion.js 的依赖)
+
+在 projectB 中通过 tsconfig 或 webpack resolve 引入了 `StyledA`，项目中可以正常使用这个组件，但是会出现 TS 的报错，诸如 `TS2742: The inferred type of 'StyledA' cannot be named without a reference to  ....`
+
+必须在 projectB 中，也包含对 emotion.js 的依赖（并确保正确安装），才能解除上述的错误。
+
+## 依赖版本
+
+```json
+{
+  "react": "^18",
+  "react-dom": "^18",
+  "react-is": "^18",
+  "@types/react": "^18",
+  "@types/react-dom": "^18",
+  "@types/react-is": "^17",
+  "clsx": "^1.2.1",
+  "csstype": "^3",
+  "@emotion/react": "^11",
+  "@emotion/styled": "^11",
+  "@mui/icons-material": "^5",
+  "@mui/material": "^5",
+  "@mui/styles": "^5",
+  "notistack": "^2"
+}
+```
+
+`@emotion/react` 和 `@emotion/styled` 可选放入 `devDependencies`
+
+@mui-ext/core 依赖 mui ，所以实际导出的内容未包含 `@emotion` 的引用（实际源码 or type 定义），但实际项目中仍旧需要安装（mui 的使用本身也要求如此）。
