@@ -1,6 +1,6 @@
 {
   "name": "@mui-ext/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Material UI (mui) extend library",
   "keywords": ["mui-ext", "mui", "StackDialog", "Flex", "Aspect", "Loading", "NonIdealState", "clsx"],
   "main": "dist/index.js",
