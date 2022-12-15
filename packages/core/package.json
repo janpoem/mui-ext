@@ -1,6 +1,8 @@
 {
   "name": "@mui-ext/core",
   "version": "0.0.1",
+  "description": "Material UI (mui) extend library",
+  "keywords": ["mui-ext", "mui", "StackDialog", "Flex", "Aspect", "Loading", "NonIdealState", "clsx"],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -12,6 +14,11 @@
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
     "tscheck": "tsc --noEmit",
     "build": "pnpm lint && pnpm tscheck && rollup -c --bundleConfigAsCjs"
+  },
+  "author": "Jiankai Zeng <janpoem@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/janpoem/mui-ext.git"
   },
   "dependencies": {
     "react": "^18",
