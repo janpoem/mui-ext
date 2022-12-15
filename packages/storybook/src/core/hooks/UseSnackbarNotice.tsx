@@ -41,7 +41,7 @@ export function UseSnackbarNotice({
 
   return (
     <SnackbarProvider maxSnack={maxSnack}>
-      <Box sx={{ p: '1em', height: 600, backgroundColor: '#f0f0f0' }}>
+      <Box sx={{ p: '1em', height: 400, backgroundColor: '#f0f0f0' }}>
         {mountOrClone(() => {
           // eslint-disable-next-line react-hooks/rules-of-hooks
           const n = useSnackbarNotice();
