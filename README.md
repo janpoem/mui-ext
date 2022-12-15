@@ -13,7 +13,8 @@
 
 该库主要包含几个部分：
 
-- [@mui-ext/core](packages/core/README.md) - 公共组件 hooks
+- [@mui-ext/core](packages/core/README.md) - 公共组件 & hooks [![version](https://img.shields.io/npm/v/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core) [![dw](https://img.shields.io/npm/dw/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core)
+
 - @mui-ext/hookform - react-hook-form 在 mui 上的定制
 - @mui-ext/dataview - 复杂的数据表视图
 
