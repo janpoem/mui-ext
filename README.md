@@ -13,8 +13,13 @@
 
 该库主要包含几个部分：
 
-- [`@mui-ext/core`](packages/core/README.md) - 公共组件 hooks
-- `@mui-ext/hookform` - react-hook-form 在 mui 上的定制
-- `@mui-ext/dataview` - 复杂的数据表视图
+- [@mui-ext/core](packages/core/README.md) - 公共组件 hooks
+- @mui-ext/hookform - react-hook-form 在 mui 上的定制
+- @mui-ext/dataview - 复杂的数据表视图
 
+## 类型使用约束
 
+1. 不要直接使用 `React.XXXX` ，而应该 `import { XXXX } from 'react'`
+2. `tsx` 包含 jsx 语法块的文件，应该至少确保文件引用了 `import React from 'react'`
+3. `styled` 和 `StyledComponent` 不应使用 `emotion` 而应该使用 `mui` ，`import { styled } from '@mui/material'` `import { StyledComponent } from '@mui/styles'`，这两者所包含的上下文略有区别
+4. build 输出物，应该检查，是否存在不必要的输出内容（如多余的引用，或者 `.d.ts` 引入了不必要的类型）。
