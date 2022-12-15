@@ -38,3 +38,4 @@ mui 扩展的核心部分（公共组件与 hooks）。
     - `HtmlComponentProps<P>` - 包含 `children`, `style`, `className` 三个属性
     - `MuiComponentProps<P>` - `HtmlComponentProps<P>` 基础上增加 `sx` 属性，该输入为穿透 `mui` 和 `emotion.js` 的重要属性，通过 `sx` 声明的样式，可引用 `mui.theme`，并进入 `emotion.js` 样式优化处理序列
     - `ComponentOrElement<P>` - 对任意的 `React.ComponentType` 或 `ReactElement` 的抽象概括，既可以是一个组件声明（`FunctionComponent` or `ClassComponent`），也可以是一个 Element 实例（`ReactElement`, `ReactNode` 之列），用于描述 `mountOrClone` 之参数
+

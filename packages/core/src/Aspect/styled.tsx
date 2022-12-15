@@ -1,5 +1,5 @@
-import { StyledComponent } from '@emotion/styled';
 import { styled } from '@mui/material';
+import { StyledComponent } from '@mui/styles';
 import { Property } from 'csstype';
 import { HtmlComponentProps } from '../utils';
 import { useRatioStyle } from './hooks';

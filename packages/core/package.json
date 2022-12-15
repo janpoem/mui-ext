@@ -1,6 +1,6 @@
 {
   "name": "@mui-ext/core",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -10,8 +10,8 @@
     "dev:start": "ts-node src/index.ts",
     "test": "mocha",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
-    "build": "rollup -c --bundleConfigAsCjs",
-    "tsc": "tsc"
+    "tscheck": "tsc --noEmit",
+    "build": "pnpm lint && pnpm tscheck && rollup -c --bundleConfigAsCjs"
   },
   "dependencies": {
     "react": "^18",
