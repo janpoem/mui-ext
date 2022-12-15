@@ -9,8 +9,13 @@
   "engines": {
     "node": ">= 16.0.0"
   },
-  "author": "",
-  "license": "UNLICENSED",
+  "author": "Jiankai Zeng <janpoem@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/janpoem/mui-ext.git"
+  },
+  "private": false,
+  "license": "MIT",
   "dependencies": {
 
   },

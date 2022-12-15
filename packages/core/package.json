@@ -20,6 +20,8 @@
     "type": "git",
     "url": "https://gitee.com/janpoem/mui-ext.git"
   },
+  "private": false,
+  "license": "MIT",
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
