@@ -40,7 +40,7 @@ export type StackDialogProps = {
 }
 
 export function StackDialog({ dialog }: StackDialogProps) {
-  const { transition, dividers, minWidth, scroll } = useStackDialogConfig();
+  const { transition, dividers, minWidth, scroll, loadingProps } = useStackDialogConfig();
 
   return (
     <>
@@ -55,7 +55,7 @@ export function StackDialog({ dialog }: StackDialogProps) {
           scroll={it.scroll ?? scroll}
         >
           <DialogBackdrop open={it.loading}>
-            <CircularProgress sx={{ color: '#ffffff' }}/>
+            <CircularProgress {...loadingProps} />
           </DialogBackdrop>
           {it.title && <DialogTitle>{it.title}</DialogTitle>}
           <DialogContent
@@ -77,7 +77,7 @@ export function StackDialog({ dialog }: StackDialogProps) {
                     if (act.onClick) {
                       dialog.setLoading(true);
                       try {
-                        await act.onClick(e);
+                        await act.onClick(e, dialog);
                       } catch (err) {
                         //
                       }

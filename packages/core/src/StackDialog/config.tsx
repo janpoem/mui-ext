@@ -1,4 +1,4 @@
-import { DialogProps, Slide } from '@mui/material';
+import { CircularProgressProps, DialogProps, Slide } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 import React from 'react';
 
@@ -9,6 +9,7 @@ export type StackDialogConfig = {
   dividers: boolean,
   minWidth: number,
   scroll: DialogProps['scroll'],
+  loadingProps: CircularProgressProps,
 }
 
 const config: Partial<StackDialogConfig> = {};
@@ -19,13 +20,14 @@ export function setupStackDialog(opts: Partial<StackDialogConfig>) {
 
 export function useStackDialogConfig(): StackDialogConfig {
   return {
-    confirmText: config.confirmText ?? 'Confirm',
-    cancelText: config.cancelText ?? 'Cancel',
-    transition: config.transition ?? DefaultTransition,
-    dividers: config.dividers ?? false,
-    minWidth: config.minWidth ?? 320,
-    scroll: config.scroll ?? 'paper',
-  }
+    confirmText : config.confirmText ?? 'Confirm',
+    cancelText  : config.cancelText ?? 'Cancel',
+    transition  : config.transition ?? DefaultTransition,
+    dividers    : config.dividers ?? false,
+    minWidth    : config.minWidth ?? 320,
+    scroll      : config.scroll ?? 'paper',
+    loadingProps: config.loadingProps ?? {},
+  };
 }
 
 const DefaultTransition = React.forwardRef(function Transition(

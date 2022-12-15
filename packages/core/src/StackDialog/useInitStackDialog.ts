@@ -8,7 +8,7 @@ type AnyProps = {};
 
 export type OpenDialogAction = {
   text: string,
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void,
+  onClick?: (e: MouseEvent<HTMLButtonElement>, dialog: UseStackDialog) => void,
 } & Omit<ButtonProps, 'onClick'>
 
 // eslint-disable-next-line
@@ -17,7 +17,7 @@ type DialogContent<P = AnyProps> = string | ComponentOrElement<P>;
 export type OpenDialogArgs<P = AnyProps> = {
   key?: string,
   title?: ReactNode | null,
-  content: DialogContent<P>,
+  content: DialogContent<P & { dialog: UseStackDialog }>,
   actions?: OpenDialogAction[],
   backdropClose?: boolean,
   persistent?: boolean,
@@ -31,12 +31,12 @@ export type OpenDialogArgs<P = AnyProps> = {
 };
 
 export type OpenAlertArgs = Omit<OpenDialogArgs, 'actions'> & {
-  onConfirm?: (e: MouseEvent<HTMLButtonElement>) => void,
+  onConfirm?: (e: MouseEvent<HTMLButtonElement>, dialog: UseStackDialog) => void,
   confirmText?: string,
 };
 
 export type OpenConfirmArgs = OpenAlertArgs & {
-  onCancel?: (e: MouseEvent<HTMLButtonElement>) => void,
+  onCancel?: (e: MouseEvent<HTMLButtonElement>, dialog: UseStackDialog) => void,
   cancelText?: string,
 };
 
