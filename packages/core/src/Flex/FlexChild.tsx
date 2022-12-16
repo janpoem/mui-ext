@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material';
 import { StyledComponent } from '@mui/styles';
 import { Property } from 'csstype';
 import { MuiComponentProps } from '../utils';

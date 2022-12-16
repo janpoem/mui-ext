@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material';
 import { StyledComponent } from '@mui/styles';
 import { Property } from 'csstype';
 import { HtmlComponentProps } from '../utils';

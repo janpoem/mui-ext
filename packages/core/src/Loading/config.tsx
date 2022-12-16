@@ -1,4 +1,4 @@
-import Box, { BoxProps } from '@mui/material/Box';
+import { Box, BoxProps } from '@mui/material';
 import React, { ComponentProps, ReactNode } from 'react';
 import { MuiComponentProps, ReactComponent } from '../utils';
 

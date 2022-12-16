@@ -17,7 +17,9 @@ export default {
   ],
   plugins: [
     rmdir(outputDir),
-    ts(),
+    ts({
+      tsconfig: './tsconfig.json',
+    }),
     commonjs({
       include     : ['node_modules/**'],
       ignoreGlobal: false

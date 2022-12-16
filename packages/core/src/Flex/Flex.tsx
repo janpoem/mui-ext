@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material';
 import { StyledComponent } from '@mui/styles';
 import { ReactNode } from 'react';
 import { MuiComponentProps } from '../utils';

@@ -1,6 +1,6 @@
 {
   "name": "@mui-ext/core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Material UI (mui) extend library",
   "keywords": ["mui-ext", "mui", "StackDialog", "Flex", "Aspect", "Loading", "NonIdealState", "clsx"],
   "main": "dist/index.js",
@@ -13,6 +13,7 @@
     "test": "mocha",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
     "tscheck": "tsc --noEmit",
+    "rollup": "rollup -c --bundleConfigAsCjs",
     "build": "pnpm lint && pnpm tscheck && rollup -c --bundleConfigAsCjs"
   },
   "author": "Jiankai Zeng <janpoem@163.com>",

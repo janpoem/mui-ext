@@ -22,8 +22,9 @@
 
 1. 不要直接使用 `React.XXXX` ，而应该 `import { XXXX } from 'react'`
 2. `tsx` 包含 jsx 语法块的文件，应该至少确保文件引用了 `import React from 'react'`
-3. `styled` 和 `StyledComponent` 不应使用 `emotion` 而应该使用 `mui` ，`import { styled } from '@mui/material'` `import { StyledComponent } from '@mui/styles'`，这两者所包含的上下文略有区别
-4. build 输出物，应该检查，是否存在不必要的输出内容（如多余的引用，或者 `.d.ts` 引入了不必要的类型）。
+3. build 输出物，应该检查，是否存在不必要的输出内容（如多余的引用，或者 `.d.ts` 引入了不必要的类型）。
+
+**重要**：暂勿使用 `'@mui/material/ComponentName'` 的方式导入组件，rollup 打包部分有待优化。
 
 ## styled 组件使用的问题
 

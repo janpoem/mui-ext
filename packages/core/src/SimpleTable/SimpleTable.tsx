@@ -1,13 +1,15 @@
-import CircularProgress from '@mui/material/CircularProgress';
-import Paper from '@mui/material/Paper';
-import TableContainer from '@mui/material/TableContainer';
-import Table from '@mui/material/Table';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableBody from '@mui/material/TableBody';
-import Pagination from '@mui/material/Pagination';
-import Backdrop from '@mui/material/Backdrop';
-import { TableProps } from '@mui/material/Table';
+import {
+  CircularProgress,
+  Paper,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  Pagination,
+  Backdrop,
+  TableProps
+} from '@mui/material';
 import React, { ElementType, ReactNode } from 'react';
 import { Flex } from '../Flex';
 import { useAutoId } from '../hooks';
@@ -82,7 +84,7 @@ export function SimpleTable<D extends AnyRecord = AnyRecord>({
       <NonIdealState {...nonIdealProps} ready={data != null && data.length > 0}>
         <TableContainer component={container ?? Paper} sx={{ position: 'relative' }}>
           <Backdrop open={reloading} sx={{ position: 'absolute' }}>
-            <CircularProgress />
+            <CircularProgress/>
           </Backdrop>
           <Table {...tableProps}>
             <TableHead>

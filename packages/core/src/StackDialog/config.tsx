@@ -1,5 +1,4 @@
-import { CircularProgressProps, DialogProps } from '@mui/material';
-import Slide from '@mui/material/Slide';
+import { Slide, CircularProgressProps, DialogProps } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 import React from 'react';
 
