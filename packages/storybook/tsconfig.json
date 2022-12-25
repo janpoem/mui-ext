@@ -17,7 +17,8 @@
       "chai"
     ],
     "paths": {
-      "@mui-ext/core": ["../core/src"]
+      "@mui-ext/core": ["../core/src"],
+      "@mui-ext/hookform": ["../hookform/src"],
     }
   },
   "include": [

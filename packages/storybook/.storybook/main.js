@@ -37,6 +37,7 @@ module.exports = {
   webpackFinal(config) {
     config.plugins.push(new SpeedMeasurePlugin());
     config.resolve.alias['@mui-ext/core'] = resolve('../core/src');
+    config.resolve.alias['@mui-ext/hookform'] = resolve('../hookform/src');
     return config;
   }
 };
