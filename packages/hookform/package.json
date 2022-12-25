@@ -1,6 +1,8 @@
 {
   "name": "@mui-ext/hookform",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "description": "react-hook-form @ Material UI (mui)",
+  "keywords": ["mui-ext", "mui", "react-hook-form", "hookform"],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -10,14 +12,29 @@
     "dev:start": "ts-node src/index.ts",
     "test": "mocha",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
-    "build": "npm run lint && npm run test && tsc",
-    "tsc": "tsc"
+    "tscheck": "tsc --noEmit",
+    "rollup": "rollup -c --bundleConfigAsCjs",
+    "build": "pnpm lint && pnpm tscheck && rollup -c --bundleConfigAsCjs"
   },
+  "author": "Jiankai Zeng <janpoem@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/janpoem/mui-ext.git"
+  },
+  "private": false,
+  "license": "MIT",
   "dependencies": {
-    "@mui-ext/core": "workspace:*"
+    "@mui-ext/core": "workspace:*",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@mui/icons-material": "^5",
+    "@mui/material": "^5",
+    "@mui/styles": "^5",
+    "react-hook-form": "^7"
   },
   "peerDependencies": {
     "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0"
+    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0",
+    "react-hook-form": "^6 || ^7"
   }
 }
