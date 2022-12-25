@@ -35,6 +35,7 @@ importers:
       nyc: ^15.1.0
       react: ^18
       react-dom: ^18
+      react-hook-form: ^7
       react-is: ^18
       regenerator-runtime: ^0.13.11
       rollup: ^3.7.2
@@ -55,6 +56,7 @@ importers:
       notistack: 2.0.8_8dcca012760ac759f20bd691e912f8b2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-hook-form: 7.41.0_react@18.2.0
       react-is: 18.2.0
     devDependencies:
       '@rollup/plugin-commonjs': 23.0.4_rollup@3.7.3
@@ -115,9 +117,21 @@ importers:
 
   packages/hookform:
     specifiers:
+      '@emotion/react': ^11
+      '@emotion/styled': ^11
       '@mui-ext/core': workspace:*
+      '@mui/icons-material': ^5
+      '@mui/material': ^5
+      '@mui/styles': ^5
+      react-hook-form: ^7
     dependencies:
+      '@emotion/react': 11.10.5_5642dd39ea6eb7af96c6ee336ce01d77
+      '@emotion/styled': 11.10.5_8541363ac4962cde609cd41c7d73f2cd
       '@mui-ext/core': link:../core
+      '@mui/icons-material': 5.10.16_bf4dd9effab3c372e550bceea9dc9394
+      '@mui/material': 5.10.17_5c94f60a4347d0fa7a0fa01f8a77c83b
+      '@mui/styles': 5.10.16_5642dd39ea6eb7af96c6ee336ce01d77
+      react-hook-form: 7.41.0_react@18.2.0
 
   packages/storybook:
     specifiers:
@@ -144,6 +158,7 @@ importers:
       notistack: ^2
       react: ^18
       react-dom: ^18
+      react-hook-form: ^7
       react-is: ^18
       speed-measure-webpack-plugin: ^1.5.0
       storybook-addon-swc: '*'
@@ -162,6 +177,7 @@ importers:
       notistack: 2.0.8_8dcca012760ac759f20bd691e912f8b2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-hook-form: 7.41.0_react@18.2.0
       react-is: 18.2.0
     devDependencies:
       '@storybook/addon-a11y': 6.5.14_react-dom@18.2.0+react@18.2.0
@@ -11742,6 +11758,15 @@ packages:
       react-dom: 18.2.0_react@18.2.0
       react-is: 17.0.2
     dev: true
+
+  /react-hook-form/7.41.0_react@18.2.0:
+    resolution: {integrity: sha512-u1cHOXujr+AsNBoeCtcCuRwPh87mXAgKtXqd3qTCBgNFYzVZLXjYgLcynORpAgqhe24r5scucR8+6gfWaXBtHQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react-inspector/5.1.1_react@18.2.0:
     resolution: {integrity: sha512-GURDaYzoLbW8pMGXwYPDBIv6nqei4kK7LPRZ9q9HCZF54wqXz/dnylBp/kfE9XmekBhHvLDdcYeyIwSrvtOiWg==}

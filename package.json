@@ -30,7 +30,8 @@
     "@mui/icons-material": "^5",
     "@mui/material": "^5",
     "@mui/styles": "^5",
-    "notistack": "^2"
+    "notistack": "^2",
+    "react-hook-form": "^7"
   },
   "devDependencies": {
     "@types/node": "^16",

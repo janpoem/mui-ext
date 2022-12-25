@@ -15,7 +15,8 @@
 
 - [@mui-ext/core](packages/core/README.md) - 公共组件 & hooks [![version](https://img.shields.io/npm/v/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core) [![dw](https://img.shields.io/npm/dw/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core)
 
-- @mui-ext/hookform - react-hook-form 在 mui 上的定制
+- [@mui-ext/hookform](packages/hookform/README.md) - react-hook-form@mui [![version](https://img.shields.io/npm/v/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform) [![dw](https://img.shields.io/npm/dw/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform)
+
 - @mui-ext/dataview - 复杂的数据表视图
 
 ## 类型使用约束

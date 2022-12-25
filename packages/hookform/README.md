@@ -1,5 +1,7 @@
 # @mui-ext/hookform
 
+[![version](https://img.shields.io/npm/v/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform) [![dw](https://img.shields.io/npm/dw/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform)
+
 react-hook-form@mui
 
 该版本仅作为早期预览版本，并用于某项目中使用，所以测试代码未完善。
