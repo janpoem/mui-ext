@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "build:core": "cd packages/core && pnpm build",
+    "build:hookform": "cd packages/hookform && pnpm build",
     "storybook": "cd packages/storybook && pnpm start"
   },
   "engines": {
