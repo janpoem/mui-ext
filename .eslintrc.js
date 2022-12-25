@@ -25,6 +25,7 @@ module.exports = {
     'node_modules',
     '*.config.*',
     'dist',
+    'dist/**/*',
     '*.stories.tsx',
     '*.stories.ts',
     '*.stories.mdx'

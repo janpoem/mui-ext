@@ -43,7 +43,7 @@ Basic.args = {
 export const Layout = Template.bind({});
 Layout.args = {
   fields  : fields,
-  gap     : '21.455px',
+  gap     : '1em',
   layout  : [
     ['name', 'password'],
     ['type', 'types'],

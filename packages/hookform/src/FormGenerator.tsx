@@ -50,6 +50,23 @@ export function FormGenerator<T extends FieldValues = FieldValues>({
   );
 }
 
+function useGapAsMarginPadding(gap?: number | string) {
+  return useMemo(() => {
+    const match = `${gap || 1}`.match(/^([\d]+(?:\.[\d]+)?)(\\%|[a-z]{1,4})?$/);
+    let num = match ? parseFloat(match[1]) : 1, unit = match ? (match[2] || '').toLowerCase() : '';
+    if (unit === '%') {
+      num = 1;
+      unit = 'rem';
+    } else if (['vw', 'vh', 'vmin', 'vmax'].includes(unit)) {
+      num = 1;
+      unit = 'rem';
+    } else if (['ex', 'ch', 'lh'].includes(unit)) {
+      unit = 'rem';
+    }
+    return { margin: `-${num / 2}${unit}`, padding: `${num / 2}${unit}` };
+  }, [gap]);
+}
+
 type FormRowProps = {
   row: FormLayoutRow,
   index: number,
@@ -67,20 +84,7 @@ function FormRow({ row, index, fields, gap = 1 }: FormRowProps) {
   }, [row]);
   const size = items.length;
 
-  const margin = useMemo(() => {
-    const match = `${gap || 1}`.match(/^([\d]+(?:\.[\d]+)?)(\\%|[a-z]{1,4})?$/);
-    let num = match ? parseFloat(match[1]) : 1, unit = match ? (match[2] || '').toLowerCase() : '';
-    if (unit === '%') {
-      num = 1;
-      unit = 'rem';
-    } else if (['vw', 'vh', 'vmin', 'vmax'].includes(unit)) {
-      num = 1;
-      unit = 'rem';
-    } else if (['em', 'rem', 'ex', 'ch', 'lh'].includes(unit)) {
-      unit = 'rem';
-    }
-    return `-${num / 2}${unit}`;
-  }, [gap]);
+  const { margin } = useGapAsMarginPadding(gap);
 
   if (!size) return null;
   if (size === 1) {
@@ -111,20 +115,7 @@ function FormItem({ item, fields, x = 1, gap = 1 }: FormItemProps) {
     return undefined;
   }, [item, fields]);
 
-  const padding = useMemo(() => {
-    const match = `${gap || 1}`.match(/^([\d]+(?:\.[\d]+)?)(\\%|[a-z]{1,4})?$/);
-    let num = match ? parseFloat(match[1]) : 1, unit = match ? (match[2] || '').toLowerCase() : '';
-    if (unit === '%') {
-      num = 1;
-      unit = 'rem';
-    } else if (['vw', 'vh', 'vmin', 'vmax'].includes(unit)) {
-      num = 1;
-      unit = 'rem';
-    } else if (['em', 'rem', 'ex', 'ch', 'lh'].includes(unit)) {
-      unit = 'rem';
-    }
-    return `${num / 2}${unit}`;
-  }, [gap]);
+  const { padding } = useGapAsMarginPadding(gap);
 
   if (typeof item === 'function') {
     if (isValidElementType(item)) {
