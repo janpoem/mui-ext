@@ -119,7 +119,7 @@ importers:
     specifiers:
       '@emotion/react': ^11
       '@emotion/styled': ^11
-      '@mui-ext/core': workspace:*
+      '@mui-ext/core': 0.0.3
       '@mui/icons-material': ^5
       '@mui/material': ^5
       '@mui/styles': ^5

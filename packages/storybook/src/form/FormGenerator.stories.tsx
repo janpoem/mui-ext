@@ -32,7 +32,7 @@ const fields = [
   { name: 'type', label: '类型', input: 'select', inputProps: { options: typeOptions } },
   { name: 'types', label: '类型多选', input: 'select', inputProps: { options: typeOptions, multiple: true } },
   { name: 'description', label: '描述', input: 'textarea', placeholder: '可输入多行描述' },
-]
+];
 
 export const Basic = Template.bind({});
 Basic.args = {
@@ -42,12 +42,18 @@ Basic.args = {
 
 export const Layout = Template.bind({});
 Layout.args = {
-  fields  : fields,
-  gap     : '1em',
-  layout  : [
+  fields         : fields,
+  gap            : '1em',
+  layout         : [
     ['name', 'password'],
     ['type', 'types'],
     'description',
   ],
-  onSubmit: (data) => console.log('onSubmit', data),
+  formHelperProps: {
+    variant: 'outlined',
+  },
+  onSubmit       : (data, form) => {
+    form.setGeneralError('nnnoooo');
+    // console.log('onSubmit', data);
+  },
 };

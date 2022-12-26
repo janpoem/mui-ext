@@ -1,4 +1,5 @@
 import { Flex } from '@mui-ext/core';
+import { Button } from '@mui/material';
 import * as React from 'react';
 import {
   FormField,
@@ -34,7 +35,7 @@ function HookFormStory(props: HookFormLoadingProps) {
 
   return (
     <HookForm<Example> onSubmit={(d) => console.log('data', d)}>
-      {({ setCustomError }) => (
+      {({ setCustomError, setError, customErrors }) => (
         <Flex col>
           <FormField
             name="id"
