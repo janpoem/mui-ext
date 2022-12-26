@@ -21,6 +21,8 @@ import {
   SubmitHandler, SubmitErrorHandler, FieldErrors,
 } from 'react-hook-form';
 import { FormLoading, HookFormConfig, useHookFormConfig } from './config';
+import { MuiFormHelperProps } from './FormFieldError';
+import { MuiInputSharedProps } from './Input';
 import { validateReturn } from './utils';
 
 export type HookFormCustomError = Error | string | undefined;
@@ -40,8 +42,10 @@ export type HookFormContext<T extends FieldValues = FieldValues> = {
   // 这里的 formSubmit 预留一层包装
   formSubmit: () => (e: BaseSyntheticEvent) => Promise<void>,
   validateReturn: typeof validateReturn
-  // validateReturn: (err: HookFormCustomError | boolean) => string | boolean,
+  setGeneralError: (message: string | undefined) => void,
 } & UseFormReturn<T>;
+
+type SubmitResult = void | boolean
 
 export type HookFormProps<T extends FieldValues = FieldValues> = {
   ns?: string,
@@ -54,8 +58,11 @@ export type HookFormProps<T extends FieldValues = FieldValues> = {
   loadingRender?: FormLoading,
   gap?: number | string,
   generalErrorKey?: string,
-  onSubmit?: (data: T, form: HookFormContext<T>) => void | boolean,
+  onSubmit?: (data: T, form: HookFormContext<T>) => SubmitResult | Promise<SubmitResult>,
   onInvalid?: (errors: FieldErrors<T>, form: HookFormContext<T>) => void,
+  //
+  inputProps?: MuiInputSharedProps,
+  formHelperProps?: MuiFormHelperProps,
 } & UseFormProps<T>
 
 function HookFormGeneric<T extends FieldValues = FieldValues>({
@@ -68,6 +75,8 @@ function HookFormGeneric<T extends FieldValues = FieldValues>({
   generalErrorKey = '',
   onSubmit,
   onInvalid,
+  inputProps,
+  formHelperProps,
   // hook-form props
   mode = 'all',
   reValidateMode = 'onChange',
@@ -82,7 +91,7 @@ function HookFormGeneric<T extends FieldValues = FieldValues>({
   delayError,
   ...props
 }: HookFormProps<T>, ref: ForwardedRef<HTMLDivElement>) {
-  const config = useHookFormConfig({ ns, lng, loadingRender });
+  const config = useHookFormConfig({ ns, lng, loadingRender, inputProps, formHelperProps });
   const { render: Form } = config;
   const [loading, setLoading] = useState(false);
 
@@ -133,6 +142,11 @@ function HookFormGeneric<T extends FieldValues = FieldValues>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onInvalid]);
 
+  const setGeneralError = useCallback((message: string | undefined) => {
+    // @ts-ignore generalErrorKey
+    basicForm.setError(generalErrorKey, { type: 'custom', message });
+  }, [basicForm, generalErrorKey]);
+
   const ctx: HookFormContext<T> = useMemo(() => ({
     ...basicForm,
     autoId,
@@ -140,13 +154,14 @@ function HookFormGeneric<T extends FieldValues = FieldValues>({
     customErrors: customErrorsRef.current,
     setCustomError,
     setCustomErrors,
+    setGeneralError,
     loading,
     setLoading,
     gap,
     generalErrorKey,
     formSubmit  : () => basicForm.handleSubmit(onSubmitValid, onSubmitInvalid),
     validateReturn,
-  }), [basicForm, config, autoId, gap, generalErrorKey, loading, onSubmitInvalid, onSubmitValid, setCustomError, setCustomErrors]);
+  }), [basicForm, autoId, config, setCustomError, setCustomErrors, setGeneralError, loading, gap, generalErrorKey, onSubmitValid, onSubmitInvalid]);
 
   useEffect(() => {
     setLoading(outerLoading);

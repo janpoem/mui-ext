@@ -2,6 +2,7 @@ import { ComponentOrElement, HtmlComponentProps, mountOrClone, MuiComponentProps
 import { Box, BoxProps, styled, Backdrop as MuiBackdrop, CircularProgress } from '@mui/material';
 import React, { ComponentProps, ReactNode, useMemo } from 'react';
 import { Field, FieldError } from 'react-hook-form';
+import { MuiFormHelperProps } from './FormFieldError';
 import { useHookForm } from './HookForm';
 import { MuiInputSharedProps } from './Input';
 
@@ -50,6 +51,7 @@ export type HookFormConfig = {
   cancelText: ReactNode | ReactNode[],
   resetText: ReactNode | ReactNode[],
   inputProps: MuiInputSharedProps,
+  formHelperProps: MuiFormHelperProps,
 }
 
 const config: Partial<HookFormConfig> = {};
@@ -60,18 +62,19 @@ export function setupHookForm(options: Partial<HookFormConfig>) {
 
 export function useHookFormConfig(options: Partial<HookFormConfig>): HookFormConfig {
   return {
-    ns           : options.ns || config.ns || 'form',
-    lng          : options.lng || config.lng || undefined,
-    hookErrors   : useHookFormErrors(options.hookErrors),
-    render       : options.render || config.render || DefaultFormRender,
-    loadingRender: options.loadingRender || config.loadingRender || (() => <CircularProgress/>),
-    submitText   : options.submitText || config.submitText || 'Submit',
-    cancelText   : options.cancelText || config.cancelText || 'Cancel',
-    resetText    : options.resetText || config.resetText || 'Reset',
-    inputProps   : config.inputProps || {
+    ns             : options.ns || config.ns || 'form',
+    lng            : options.lng || config.lng || undefined,
+    hookErrors     : useHookFormErrors(options.hookErrors),
+    render         : options.render || config.render || DefaultFormRender,
+    loadingRender  : options.loadingRender || config.loadingRender || (() => <CircularProgress/>),
+    submitText     : options.submitText || config.submitText || 'Submit',
+    cancelText     : options.cancelText || config.cancelText || 'Cancel',
+    resetText      : options.resetText || config.resetText || 'Reset',
+    inputProps     : options.inputProps || config.inputProps || {
       size   : 'small',
       variant: 'outlined',
     },
+    formHelperProps: options.formHelperProps || config.formHelperProps || {},
   };
 }
 
