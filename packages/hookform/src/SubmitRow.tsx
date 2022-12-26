@@ -1,6 +1,7 @@
 import { Flex, FlexChild, FlexProps, MuiComponentProps } from '@mui-ext/core';
 import { Button, ButtonProps } from '@mui/material';
 import React, { ReactNode, useCallback } from 'react';
+import { FormFieldError } from './FormFieldError';
 import { useHookForm } from './HookForm';
 
 export type SubmitRowProps = MuiComponentProps<{
@@ -46,7 +47,7 @@ export function SubmitRow({
   ...props
 }: SubmitRowProps) {
   const form = useHookForm();
-  const { config, reset, formState, loading: disabled, gap: formGap, formSubmit } = form;
+  const { config, reset, formState, loading: disabled, gap: formGap, formSubmit, generalErrorKey } = form;
 
   const btnProps = { grow, size, variant };
 
@@ -60,7 +61,7 @@ export function SubmitRow({
   }, [onCancel]);
 
   return (
-    <>
+    <Flex col>
       <Flex items="start" {...props} gap={gap ?? formGap}>
         <Button
           type={'button'}
@@ -99,6 +100,7 @@ export function SubmitRow({
           </FlexChild>
         )}
       </Flex>
-    </>
+      <FormFieldError field={generalErrorKey} sx={{ textAlign: grow ? 'center' : undefined }}/>
+    </Flex>
   );
 }
