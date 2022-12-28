@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button } from '@mui/material';
-import { StackDialog, useInitStackDialog } from '@mui-ext/core';
+import { setupStackDialog, StackDialog, useInitStackDialog } from '@mui-ext/core';
 
 // export type StackDialogExampleProps = {
 //   //
@@ -13,6 +13,17 @@ export function StackDialogExample() {
 
   const [example1, setExample1] = useState(0);
   const [example2, setExample2] = useState<Record<string, string> | undefined>(undefined);
+
+  useEffect(() => {
+    setupStackDialog({
+      titleProps : {
+        sx: { backgroundColor: 'pink' },
+      },
+      buttonProps: {
+        variant: 'contained',
+      },
+    });
+  }, []);
 
   const click1 = () => {
     dialog.open({

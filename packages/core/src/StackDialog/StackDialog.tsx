@@ -31,7 +31,18 @@ export type StackDialogProps = {
 }
 
 export function StackDialog({ dialog }: StackDialogProps) {
-  const { transition, dividers, minWidth, scroll, loadingProps } = useStackDialogConfig();
+  const {
+    transition,
+    dividers,
+    minWidth,
+    maxWidth,
+    scroll,
+    loadingProps,
+    buttonProps,
+    titleProps,
+    contentProps: { sx: contentSx, ...contentProps },
+    actionsProps,
+  } = useStackDialogConfig();
 
   return (
     <>
@@ -42,16 +53,17 @@ export function StackDialog({ dialog }: StackDialogProps) {
           onClose={it.backdropClose === false ? undefined : (() => dialog.close())}
           keepMounted={!!it.persistent}
           TransitionComponent={it.transition ?? transition}
-          maxWidth={dialog.options.maxWidth ?? it.maxWidth}
+          maxWidth={dialog.options.maxWidth ?? maxWidth ?? it.maxWidth}
           scroll={it.scroll ?? scroll}
         >
           <DialogBackdrop open={it.loading}>
             <CircularProgress {...loadingProps} />
           </DialogBackdrop>
-          {it.title && <DialogTitle>{it.title}</DialogTitle>}
+          {it.title && <DialogTitle {...titleProps}>{it.title}</DialogTitle>}
           <DialogContent
+            {...contentProps}
             sx={{
-              // p       : `${it.title ? (it.dividers ?? dividers ? '0.5rem' : '0') : '1rem'} 1rem 1rem`,
+              ...contentSx,
               minWidth: it.minWidth ?? minWidth,
             }}
             dividers={it.dividers ?? dividers}
@@ -59,10 +71,11 @@ export function StackDialog({ dialog }: StackDialogProps) {
             {typeof it.content === 'string' ? it.content : mountOrClone(it.content, { ...it.props, dialog })}
           </DialogContent>
           {it.actions?.length && (
-            <DialogActions>
+            <DialogActions {...actionsProps}>
               {it.actions.map((act, actIdx) => (
                 <Button
                   {...act}
+                  {...buttonProps}
                   key={`${it.key}_act_${actIdx}`}
                   onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
                     if (act.onClick) {
