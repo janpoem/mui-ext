@@ -1,7 +1,7 @@
 import { FormHelperText, FormHelperTextProps } from '@mui/material';
 import React, { ReactNode, useMemo } from 'react';
 import { FieldError, get } from 'react-hook-form';
-import { useHookForm } from './HookForm';
+import { useHookForm } from './useHookForm';
 
 export type MuiFormHelperProps = {
   margin?: FormHelperTextProps['margin'],

@@ -1,4 +1,4 @@
-import { HookFormCustomError } from './HookForm';
+import { HookFormCustomError } from './types';
 
 const validatePass = true;
 

@@ -1,21 +1,8 @@
-import { ComponentOrElement, HtmlComponentProps, mountOrClone, MuiComponentProps, ReactComponent } from '@mui-ext/core';
-import { Box, BoxProps, styled, Backdrop as MuiBackdrop, CircularProgress } from '@mui/material';
-import React, { ComponentProps, ReactNode, useMemo } from 'react';
-import { Field, FieldError } from 'react-hook-form';
-import { MuiFormHelperProps } from './FormFieldError';
-import { useHookForm } from './HookForm';
-import { MuiInputSharedProps } from './Input';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type FormLoadingProps<P = any> = HtmlComponentProps<{ loading?: boolean } & P>
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type FormLoading<P = any> = ComponentOrElement<FormLoadingProps<P>>
-
-export type FormRenderProps = MuiComponentProps<{
-  //
-} & ComponentProps<'div'> & BoxProps>
-
-export type FormRender = ReactComponent<FormRenderProps>;
+import { mountOrClone } from '@mui-ext/core';
+import { Box, styled, Backdrop as MuiBackdrop, CircularProgress } from '@mui/material';
+import React, { useMemo } from 'react';
+import { FormRenderProps, HookErrors, HookFormConfig } from './types';
+import { useHookForm } from './useHookForm';
 
 const Form = styled(Box)(() => ({
   position: 'relative',
@@ -41,19 +28,6 @@ function DefaultFormRender({ children, ...props }: FormRenderProps) {
   );
 }
 
-export type HookFormConfig = {
-  ns: string,
-  lng?: string,
-  hookErrors: HookErrors,
-  render: FormRender,
-  loadingRender: FormLoading,
-  submitText: ReactNode | ReactNode[],
-  cancelText: ReactNode | ReactNode[],
-  resetText: ReactNode | ReactNode[],
-  inputProps: MuiInputSharedProps,
-  formHelperProps: MuiFormHelperProps,
-}
-
 const config: Partial<HookFormConfig> = {};
 
 export function setupHookForm(options: Partial<HookFormConfig>) {
@@ -76,19 +50,6 @@ export function useHookFormConfig(options: Partial<HookFormConfig>): HookFormCon
     },
     formHelperProps: options.formHelperProps || config.formHelperProps || {},
   };
-}
-
-export type HookFormRuleMessage = string | ((err: FieldError, field: Field | undefined) => string);
-
-export type HookErrors = {
-  required: HookFormRuleMessage,
-  min: HookFormRuleMessage,
-  max: HookFormRuleMessage,
-  minLength: HookFormRuleMessage,
-  maxLength: HookFormRuleMessage,
-  pattern: HookFormRuleMessage,
-  validate: HookFormRuleMessage,
-  [k: string]: HookFormRuleMessage,
 }
 
 function defaultHookErrors(): HookErrors {

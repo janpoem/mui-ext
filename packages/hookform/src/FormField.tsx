@@ -8,9 +8,9 @@ import {
 import { Message } from 'react-hook-form/dist/types/errors';
 import { isElement, isValidElementType } from 'react-is';
 import { FormFieldError } from './FormFieldError';
-import { useHookForm } from './HookForm';
 import { getRegInput, isRegInput, UserInput } from './Input';
 import { Label } from './Label';
+import { useHookForm } from './useHookForm';
 
 type FieldEvent = {
   type: string,

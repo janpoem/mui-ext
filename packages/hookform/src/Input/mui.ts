@@ -1,5 +1,5 @@
 import { TextFieldProps } from '@mui/material';
-import { useHookForm } from '../HookForm';
+import { useHookForm } from '../useHookForm';
 
 export type MuiInputSharedProps = {
   size?: TextFieldProps['size'],

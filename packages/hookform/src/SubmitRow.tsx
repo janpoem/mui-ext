@@ -2,7 +2,7 @@ import { Flex, FlexChild, FlexProps, MuiComponentProps } from '@mui-ext/core';
 import { Button, ButtonProps } from '@mui/material';
 import React, { ReactNode, useCallback } from 'react';
 import { FormFieldError } from './FormFieldError';
-import { useHookForm } from './HookForm';
+import { useHookForm } from './useHookForm';
 
 export type SubmitRowProps = MuiComponentProps<{
   submitText?: ReactNode | ReactNode[],

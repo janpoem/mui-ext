@@ -1,12 +1,11 @@
 import { useAutoId } from '@mui-ext/core';
 import { SxProps, Theme } from '@mui/material';
 import React, {
-  BaseSyntheticEvent,
   ComponentType,
-  createElement, CSSProperties, Dispatch,
+  createElement, CSSProperties,
   ForwardedRef,
   forwardRef,
-  ReactNode, SetStateAction,
+  ReactNode,
   useCallback, useEffect, useMemo,
   useRef,
   useState,
@@ -16,34 +15,13 @@ import {
   FieldValues,
   useForm,
   UseFormProps,
-  UseFormReturn,
-  useFormContext,
   SubmitHandler, SubmitErrorHandler, FieldErrors,
 } from 'react-hook-form';
-import { FormLoading, HookFormConfig, useHookFormConfig } from './config';
+import { useHookFormConfig } from './config';
 import { MuiFormHelperProps } from './FormFieldError';
 import { MuiInputSharedProps } from './Input';
+import { FormLoading, HookFormContext, HookFormCustomError, HookFormCustomErrors } from './types';
 import { validateReturn } from './utils';
-
-export type HookFormCustomError = Error | string | undefined;
-
-export type HookFormCustomErrors<T extends FieldValues = FieldValues> = Partial<Record<keyof T | string, HookFormCustomError>>;
-
-export type HookFormContext<T extends FieldValues = FieldValues> = {
-  autoId: string,
-  config: HookFormConfig,
-  customErrors: HookFormCustomErrors<T>,
-  setCustomError: (field: keyof T | string, err: HookFormCustomError | null) => void,
-  setCustomErrors: (errs: HookFormCustomErrors<T>) => void,
-  loading: boolean,
-  setLoading: Dispatch<SetStateAction<boolean>>,
-  gap: number | string,
-  generalErrorKey: string,
-  // 这里的 formSubmit 预留一层包装
-  formSubmit: () => (e: BaseSyntheticEvent) => Promise<void>,
-  validateReturn: typeof validateReturn
-  setGeneralError: (message: string | undefined) => void,
-} & UseFormReturn<T>;
 
 type SubmitResult = void | boolean
 
@@ -179,7 +157,3 @@ function HookFormGeneric<T extends FieldValues = FieldValues>({
 export const HookForm = forwardRef(HookFormGeneric) as <T extends FieldValues = FieldValues>(
   props: HookFormProps<T> & { ref?: ForwardedRef<HTMLDivElement> },
 ) => ReturnType<typeof HookFormGeneric<T>>;
-
-export function useHookForm<T extends FieldValues = FieldValues>(): HookFormContext<T> {
-  return useFormContext() as HookFormContext<T>;
-}
