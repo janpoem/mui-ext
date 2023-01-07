@@ -35,10 +35,17 @@ export function PriceDisplay({
     return '';
   }, [precision]);
 
+  const _adjust: PriceDisplayProps['adjust'] = useMemo(() => {
+    if (precision > 0) {
+      return !adjust ? 'round' : adjust;
+    }
+    return adjust;
+  }, [adjust, precision]);
+
   const [int, float] = useMemo(() => {
     let v = filterNumeric(value, defaultValue);
-    if (adjust !== false) {
-      v = decimalAdjust(adjust, v, precision > 0 ? -precision : 0);
+    if (_adjust !== false) {
+      v = decimalAdjust(_adjust, v, precision > 0 ? -precision : 0);
     }
     let [v1, v2] = `${v}`.split('.');
     if (floatMode > 0) {
@@ -55,7 +62,7 @@ export function PriceDisplay({
       v1 = v1.replace(thousands, thousandSeparator);
     }
     return [v1, v2];
-  }, [value, defaultValue, adjust, precision, thousandSeparator, floatZero, floatMode]);
+  }, [value, defaultValue, _adjust, precision, thousandSeparator, floatZero, floatMode]);
 
   return (
     <Flex {...{ ...props, inline, items }}>
