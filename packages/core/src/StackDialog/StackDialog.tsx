@@ -55,6 +55,7 @@ export function StackDialog({ dialog }: StackDialogProps) {
           TransitionComponent={it.transition ?? transition}
           maxWidth={dialog.options.maxWidth ?? maxWidth ?? it.maxWidth}
           scroll={it.scroll ?? scroll}
+          fullScreen={it.fullScreen}
         >
           <DialogBackdrop open={it.loading}>
             <CircularProgress {...loadingProps} />

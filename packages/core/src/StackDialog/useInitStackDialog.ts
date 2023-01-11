@@ -28,6 +28,7 @@ export type OpenDialogArgs<P = AnyProps> = {
   onClose?: () => void,
   transition?: DialogProps['TransitionComponent'],
   scroll?: DialogProps['scroll'],
+  fullScreen?: boolean,
 };
 
 export type OpenAlertArgs = Omit<OpenDialogArgs, 'actions'> & {

@@ -27,8 +27,9 @@ export function StackDialogExample() {
 
   const click1 = () => {
     dialog.open({
-      title  : 'Example 1',
-      content: function Example1() {
+      title     : 'Example 1',
+      fullScreen: true,
+      content   : function Example1() {
         const [value, setValue] = useState(example1);
 
         useEffect(() => {
@@ -85,9 +86,10 @@ export function StackDialogExample() {
 
   const click3 = () => {
     dialog.confirm({
-      title    : 'Example 3',
-      content  : 'click [Confirm] to emit waiting',
-      onConfirm: async () => waiting(2),
+      title     : 'Example 3',
+      content   : 'click [Confirm] to emit waiting',
+      fullScreen: true,
+      onConfirm : async () => waiting(2),
     });
   };
 
