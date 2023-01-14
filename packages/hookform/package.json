@@ -1,6 +1,6 @@
 {
   "name": "@mui-ext/hookform",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "react-hook-form @ Material UI (mui)",
   "keywords": ["mui-ext", "mui", "react-hook-form", "hookform"],
   "main": "dist/index.js",
@@ -14,7 +14,8 @@
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
     "tscheck": "tsc --noEmit",
     "rollup": "rollup -c --bundleConfigAsCjs",
-    "build": "pnpm lint && pnpm tscheck && rollup -c --bundleConfigAsCjs"
+    "build": "pnpm lint & pnpm tscheck & rollup -c --bundleConfigAsCjs",
+    "npm-publish": "pnpm build & nrm use npm & npm publish --access public"
   },
   "author": "Jiankai Zeng <janpoem@163.com>",
   "repository": {

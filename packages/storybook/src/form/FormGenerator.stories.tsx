@@ -1,6 +1,5 @@
-import { Flex } from '@mui-ext/core';
 import * as React from 'react';
-import { FormGenerator, FormGeneratorProps, MuiSelectOption } from '@mui-ext/hookform';
+import { FormGenerator, MuiSelectOption } from '@mui-ext/hookform';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
@@ -36,6 +35,7 @@ const fields = [
 
 export const Basic = Template.bind({});
 Basic.args = {
+  formTag : 'form',
   fields  : fields,
   onSubmit: (data) => console.log('onSubmit', data),
 };

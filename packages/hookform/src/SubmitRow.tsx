@@ -64,7 +64,7 @@ export function SubmitRow({
     <Flex col>
       <Flex items="start" {...props} gap={gap ?? formGap}>
         <Button
-          type={'button'}
+          type={'submit'}
           onClick={formSubmit()}
           {...buttonProps('primary', { ...btnProps, disabled })}
         >

@@ -2,7 +2,7 @@ import { useAutoId } from '@mui-ext/core';
 import { SxProps, Theme } from '@mui/material';
 import React, {
   ComponentType,
-  createElement, CSSProperties,
+  createElement, CSSProperties, ElementType,
   ForwardedRef,
   forwardRef,
   ReactNode,
@@ -28,6 +28,7 @@ type SubmitResult = void | boolean
 export type HookFormProps<T extends FieldValues = FieldValues> = {
   ns?: string,
   lng?: string,
+  formTag?: ElementType,
   sx?: SxProps<Theme>,
   style?: CSSProperties | undefined,
   className?: string | undefined,
@@ -46,6 +47,7 @@ export type HookFormProps<T extends FieldValues = FieldValues> = {
 function HookFormGeneric<T extends FieldValues = FieldValues>({
   ns,
   lng,
+  formTag,
   children,
   loading: outerLoading = false,
   loadingRender,
@@ -69,7 +71,7 @@ function HookFormGeneric<T extends FieldValues = FieldValues>({
   delayError,
   ...props
 }: HookFormProps<T>, ref: ForwardedRef<HTMLDivElement>) {
-  const config = useHookFormConfig({ ns, lng, loadingRender, inputProps, formHelperProps });
+  const config = useHookFormConfig({ ns, lng, loadingRender, inputProps, formHelperProps, formTag });
   const { render: Form } = config;
   const [loading, setLoading] = useState(false);
 

@@ -1,12 +1,8 @@
 import { mountOrClone } from '@mui-ext/core';
-import { Box, styled, Backdrop as MuiBackdrop, CircularProgress } from '@mui/material';
-import React, { useMemo } from 'react';
+import { styled, Backdrop as MuiBackdrop, CircularProgress } from '@mui/material';
+import React, { ElementType, useMemo } from 'react';
 import { FormRenderProps, HookErrors, HookFormConfig } from './types';
 import { useHookForm } from './useHookForm';
-
-const Form = styled(Box)(() => ({
-  position: 'relative',
-}));
 
 const Backdrop = styled(MuiBackdrop)(({ theme }) => ({
   position  : 'absolute',
@@ -18,13 +14,15 @@ const Backdrop = styled(MuiBackdrop)(({ theme }) => ({
   },
 }));
 
-function DefaultFormRender({ children, ...props }: FormRenderProps) {
-  const { config: { loadingRender }, loading } = useHookForm();
+function DefaultFormRender({ children, ...props }: FormRenderProps<ElementType>) {
+  const { config: { loadingRender, formTag }, loading } = useHookForm();
+  // @ts-ignore formTag
+  const StyledFormTag = useMemo(() => styled(formTag)(() => ({ position: 'relative' })), [formTag]);
   return (
-    <Form {...props}>
+    <StyledFormTag {...props}>
       <Backdrop open={loading}>{mountOrClone(loadingRender, { loading })}</Backdrop>
       {children}
-    </Form>
+    </StyledFormTag>
   );
 }
 
@@ -49,6 +47,7 @@ export function useHookFormConfig(options: Partial<HookFormConfig>): HookFormCon
       variant: 'outlined',
     },
     formHelperProps: options.formHelperProps || config.formHelperProps || {},
+    formTag        : options.formTag || config.formTag || 'form',
   };
 }
 

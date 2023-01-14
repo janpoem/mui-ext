@@ -1,10 +1,10 @@
 import { Flex } from '@mui-ext/core';
-import { Button } from '@mui/material';
+import { useEffect, useState } from 'react';
 import * as React from 'react';
 import {
   FormField,
   HookForm,
-  MuiSelectOption,
+  MuiSelectOption, setupHookForm,
   SubmitRow,
   SubmitRowProps,
 } from '@mui-ext/hookform';
@@ -32,46 +32,58 @@ const typeOptions: MuiSelectOption[] = [
 type HookFormLoadingProps = {} & SubmitRowProps
 
 function HookFormStory(props: HookFormLoadingProps) {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    setupHookForm({ formTag: 'div' });
+    setReady(true);
+
+    return () => {
+      setupHookForm({ formTag: undefined });
+    };
+  }, []);
 
   return (
-    <HookForm<Example> onSubmit={(d) => console.log('data', d)}>
-      {({ setCustomError, setError, customErrors }) => (
-        <Flex col>
-          <FormField
-            name="id"
-            label="id"
-            input={'text'}
-            rules={{
-              required: true,
-              validate: (v) => {
-                if (`${v}`.length < 4) {
-                  throw new Error('aaaaaa');
-                }
-              },
-              onChange: (ev) => {
-                const v = `${ev.target.value}`;
-                if (!v.startsWith('test')) {
-                  setCustomError('id', 'should start with "test"');
-                } else {
-                  setCustomError('id', null);
-                }
-              },
-            }}
-            tip={'Hello'}
-          />
-          <FormField name="name" label="name" input={'text'} rules={{ maxLength: 10 }}/>
-          <FormField name="description" label="description" input={'textarea'} rules={{ minLength: 10 }}/>
-          <FormField
-            name="type" label="type" input={'select'} inputProps={{ options: typeOptions }} rules={{ required: true }}
-          />
-          <FormField
-            name="types" label="types" input={'select'} inputProps={{ options: typeOptions, multiple: true }}
-            rules={{ required: true }}
-          />
-          <SubmitRow {...props} />
-        </Flex>
-      )}
-    </HookForm>
+    <>
+      {ready && <HookForm<Example> onSubmit={(d) => console.log('data', d)}>
+        {({ setCustomError }) => (
+          <Flex col>
+            <FormField
+              name="id"
+              label="id"
+              input={'text'}
+              rules={{
+                required: true,
+                validate: (v) => {
+                  if (`${v}`.length < 4) {
+                    throw new Error('aaaaaa');
+                  }
+                },
+                onChange: (ev) => {
+                  const v = `${ev.target.value}`;
+                  if (!v.startsWith('test')) {
+                    setCustomError('id', 'should start with "test"');
+                  } else {
+                    setCustomError('id', null);
+                  }
+                },
+              }}
+              tip={'Hello'}
+            />
+            <FormField name="name" label="name" input={'text'} rules={{ maxLength: 10 }}/>
+            <FormField name="description" label="description" input={'textarea'} rules={{ minLength: 10 }}/>
+            <FormField
+              name="type" label="type" input={'select'} inputProps={{ options: typeOptions }} rules={{ required: true }}
+            />
+            <FormField
+              name="types" label="types" input={'select'} inputProps={{ options: typeOptions, multiple: true }}
+              rules={{ required: true }}
+            />
+            <SubmitRow {...props} />
+          </Flex>
+        )}
+      </HookForm>}
+    </>
   );
 }
 

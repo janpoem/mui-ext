@@ -1,6 +1,13 @@
 import { ComponentOrElement, HtmlComponentProps, MuiComponentProps, ReactComponent } from '@mui-ext/core';
 import { BoxProps } from '@mui/material';
-import { BaseSyntheticEvent, ComponentProps, Dispatch, ReactNode, SetStateAction } from 'react';
+import {
+  BaseSyntheticEvent,
+  ComponentProps,
+  Dispatch,
+  ElementType,
+  ReactNode,
+  SetStateAction,
+} from 'react';
 import { Field, FieldError, FieldValues, UseFormReturn } from 'react-hook-form';
 import { MuiFormHelperProps } from './FormFieldError';
 import { MuiInputSharedProps } from './Input';
@@ -11,11 +18,11 @@ export type FormLoadingProps<P = any> = HtmlComponentProps<{ loading?: boolean }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type FormLoading<P = any> = ComponentOrElement<FormLoadingProps<P>>
 
-export type FormRenderProps = MuiComponentProps<{
+export type FormRenderProps<E extends ElementType = 'div'> = MuiComponentProps<{
   //
-} & ComponentProps<'div'> & BoxProps>
+} & ComponentProps<E> & BoxProps>
 
-export type FormRender = ReactComponent<FormRenderProps>;
+export type FormRender<E extends ElementType = ElementType> = ReactComponent<FormRenderProps<E>>;
 
 export type HookFormRuleMessage = string | ((err: FieldError, field: Field | undefined) => string);
 
@@ -41,6 +48,7 @@ export type HookFormConfig = {
   resetText: ReactNode | ReactNode[],
   inputProps: MuiInputSharedProps,
   formHelperProps: MuiFormHelperProps,
+  formTag: ElementType
 }
 
 export type HookFormCustomError = Error | string | undefined;
