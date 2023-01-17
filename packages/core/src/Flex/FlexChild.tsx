@@ -9,6 +9,7 @@ export type FlexChildProps = {
   grow?: FlexGrowShrink,
   shrink?: FlexGrowShrink,
   basis?: Property.FlexBasis | number,
+  flex?: Property.Flex,
 } & ComponentProps<'div'>
 
 export const FlexChild: StyledComponent<MuiComponentProps<FlexChildProps>> = styled('div', {
@@ -17,7 +18,9 @@ export const FlexChild: StyledComponent<MuiComponentProps<FlexChildProps>> = sty
   grow,
   shrink,
   basis,
+  flex,
 }) => ({
+  flex,
   flexGrow  : useFlexGrowShrink(grow),
   flexShrink: useFlexGrowShrink(shrink),
   flexBasis : basis == null ? undefined : basis,
