@@ -5,10 +5,11 @@ triggers:
   trigger: auto
   push:
     branches:
-      prefix:
-        - ^build(core)
       include:
         - master
+    commitMessages:
+      include:
+        - '^build\(core\)\:.*'
 variables:
   global:
     - NPM_TOKEN

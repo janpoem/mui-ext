@@ -5,10 +5,11 @@ triggers:
   trigger: auto
   push:
     branches:
-      prefix:
-        - ^build(hookform)
       include:
         - master
+    commitMessages:
+      include:
+        - '^build\(hookform\)\:.*'
 variables:
   global:
     - NPM_TOKEN
@@ -26,4 +27,4 @@ stages:
           - npm install pnpm @jsdevtools/npm-publish -g
           - cd packages/hookform
           - pnpm install && rm -rf ./dist && pnpm build
-          - test -f ./dist/index.js
+          - test -f ./dist/index.js && npm-publish --token=${NPM_TOKEN} ./package.json
