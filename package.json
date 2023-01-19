@@ -7,9 +7,6 @@
     "build:hookform": "cd packages/hookform && pnpm build",
     "storybook": "cd packages/storybook && pnpm start"
   },
-  "engines": {
-    "node": ">= 16.0.0"
-  },
   "author": "Jiankai Zeng <janpoem@163.com>",
   "repository": {
     "type": "git",
