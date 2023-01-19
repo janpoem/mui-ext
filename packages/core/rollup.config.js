@@ -13,7 +13,7 @@ export default {
     {
       file: `${outputDir}/index.js`,
       format: 'cjs',
-      interop: (id) => id === 'clsx' ? 'compat' : 'default',
+      interop: (id) => id === 'clsx' ? 'auto' : 'default',
     }
   ],
   plugins: [

@@ -13,8 +13,8 @@
     "test": "mocha",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
     "tscheck": "tsc --noEmit",
-    "rollup": "rollup -c --bundleConfigAsCjs",
-    "build": "pnpm lint && pnpm tscheck && rollup -c --bundleConfigAsCjs"
+    "rollup": "rollup -c",
+    "build": "pnpm lint && pnpm tscheck && rollup -c"
   },
   "author": "Jiankai Zeng <janpoem@163.com>",
   "repository": {

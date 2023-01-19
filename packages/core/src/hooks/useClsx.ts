@@ -1,4 +1,4 @@
-import { default as clsx } from 'clsx';
+import clsx from 'clsx';
 import { useMemo } from 'react';
 
 export type ClassNameType = string | null | undefined;
