@@ -6,7 +6,7 @@ triggers:
   push:
     branches:
       prefix:
-        - ^build(hookform):
+        - ^build(hookform)
       include:
         - master
 variables:
@@ -26,4 +26,4 @@ stages:
           - npm install pnpm @jsdevtools/npm-publish -g
           - cd packages/hookform
           - pnpm install && rm -rf ./dist && pnpm build
-          - test -f ./dist/index.js && npm-publish --token=${NPM_TOKEN} ./package.json
+          - test -f ./dist/index.js
