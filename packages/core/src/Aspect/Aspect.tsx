@@ -3,7 +3,7 @@ import { useClsx } from '../hooks';
 import { MuiComponentProps } from '../utils';
 import { AspectInner, AspectInnerProps, AspectOuter, AspectOuterProps } from './styled';
 
-export type AspectProps = MuiComponentProps<AspectOuterProps & AspectInnerProps> & ComponentProps<'div'>
+export type AspectProps = MuiComponentProps<AspectOuterProps & AspectInnerProps & ComponentProps<'div'>>
 
 export function Aspect({
   children,
