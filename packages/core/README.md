@@ -3,7 +3,7 @@
 [![version](https://img.shields.io/npm/v/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core)
 [![dw](https://img.shields.io/npm/dw/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core)
 
-mui 扩展的核心部分（公共组件与 hooks）。
+mui 扩展的核心部分（公共组件与 hooks） 。
 
 ## 组件索引
 
