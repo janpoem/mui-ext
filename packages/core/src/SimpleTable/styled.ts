@@ -1,5 +1,7 @@
-import { styled } from '@mui/material';
-import { TableCell, TableCellProps, TableRow, TableRowProps } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import { TableCellProps, TableRowProps } from '@mui/material';
 import { StyledComponent } from '@mui/styles';
 
 export const TableBodyRow: StyledComponent<TableRowProps> = styled(TableRow)(({ theme }) => ({

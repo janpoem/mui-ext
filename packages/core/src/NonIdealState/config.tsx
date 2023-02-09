@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { styled } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { Flex, FlexProps } from '../Flex';
 import { MuiComponentProps, ReactComponent } from '../utils';
 

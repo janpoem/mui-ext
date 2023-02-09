@@ -1,5 +1,11 @@
 import React from 'react';
-import { styled, Button, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
 import { mountOrClone } from '../utils';
 import { useStackDialogConfig } from './config';
 import { UseStackDialog } from './useInitStackDialog';

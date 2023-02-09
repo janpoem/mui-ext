@@ -1,10 +1,9 @@
-import { styled } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { StyledComponent } from '@mui/styles';
 import { ReactNode } from 'react';
 import { MuiComponentProps } from '../utils';
 import { FlexChild, FlexChildProps } from './FlexChild';
 import { AlignItems, useFlexGap, useJustifyContent, JustifyContent } from './hooks';
-
 
 export type FlexProps = {
   inline?: boolean,

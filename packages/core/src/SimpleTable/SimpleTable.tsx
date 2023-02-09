@@ -1,16 +1,14 @@
-import {
-  CircularProgress,
-  Paper,
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableBody,
-  Pagination,
-  Backdrop,
-  TableProps
-} from '@mui/material';
 import React, { ElementType, ReactNode } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Paper from '@mui/material/Paper';
+import TableContainer from '@mui/material/TableContainer';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import Pagination from '@mui/material/Pagination';
+import Backdrop from '@mui/material/Backdrop';
+import { TableProps } from '@mui/material';
 import { Flex } from '../Flex';
 import { useAutoId } from '../hooks';
 import { Loading, LoadingProps } from '../Loading';
