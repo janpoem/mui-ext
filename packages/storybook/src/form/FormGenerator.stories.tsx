@@ -30,7 +30,7 @@ const fields = [
   { name: 'password', label: '密码', input: 'password', rules: { required: true } },
   { name: 'type', label: '类型', input: 'select', inputProps: { options: typeOptions } },
   { name: 'types', label: '类型多选', input: 'select', inputProps: { options: typeOptions, multiple: true } },
-  { name: 'description', label: '描述', input: 'textarea', placeholder: '可输入多行描述' },
+  { name: 'description', label: '描述', input: 'textarea', placeholder: '可输入多行描述', inputProps: { maxRows: 6 } },
 ];
 
 export const Basic = Template.bind({});

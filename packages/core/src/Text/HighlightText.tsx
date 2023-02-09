@@ -37,7 +37,7 @@ export function HighlightText<E extends ElementType = 'span', P = ElementTypePro
 }: HighlightTextProps<E, P>) {
   const original = useMemo(() => text || children, [text, children]);
   // @ts-ignore tag
-  const Render = useMemo(() => styled(tag ?? 'span')(), [tag]);
+  const Render = useMemo(() => styled(tag ?? 'span')({}), [tag]);
 
   const items = useMemo(() => {
     if (!original) return [];
