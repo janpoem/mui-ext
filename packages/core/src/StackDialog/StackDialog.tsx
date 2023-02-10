@@ -55,9 +55,9 @@ export function StackDialog({ dialog }: StackDialogProps) {
       {dialog.stack.map(it => (
         <Dialog
           key={it.key}
-          open={dialog.isOpen && it.key === dialog.current}
+          open={dialog.shouldOpen(it.key)}
           onClose={it.backdropClose === false ? undefined : (() => dialog.close())}
-          keepMounted={!!it.persistent}
+          keepMounted={it.persistent}
           TransitionComponent={it.transition ?? transition}
           maxWidth={dialog.options.maxWidth ?? maxWidth ?? it.maxWidth}
           scroll={it.scroll ?? scroll}

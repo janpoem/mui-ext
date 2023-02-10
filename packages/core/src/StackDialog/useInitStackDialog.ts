@@ -20,7 +20,7 @@ export type OpenDialogArgs<P = AnyProps> = {
   content: DialogContent<P & { dialog: UseStackDialog }>,
   actions?: OpenDialogAction[],
   backdropClose?: boolean,
-  persistent?: boolean,
+  // persistent?: boolean,
   minWidth?: number | string,
   dividers?: boolean,
   maxWidth?: DialogProps['maxWidth'],
@@ -29,6 +29,7 @@ export type OpenDialogArgs<P = AnyProps> = {
   transition?: DialogProps['TransitionComponent'],
   scroll?: DialogProps['scroll'],
   fullScreen?: boolean,
+  keepCurrent?: boolean,
 };
 
 export type OpenAlertArgs = Omit<OpenDialogArgs, 'actions'> & {
@@ -45,11 +46,13 @@ export type DialogItem<P = AnyProps> = OpenDialogArgs<P> & {
   key: string,
   date: Date,
   loading: boolean,
+  persistent: boolean,
 }
 
 export type UseStackDialog = {
   options: InitStackDialogOptions,
   isOpen: boolean,
+  shouldOpen(key: string): boolean,
   stack: DialogItem[],
   current: string | undefined,
   open<P = AnyProps>(args: OpenDialogArgs<P>): void,
@@ -78,8 +81,10 @@ export function useInitStackDialog({
   const config = useStackDialogConfig();
 
   const [stack, setStack] = useState<DialogItem[]>([]);
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<string | undefined>(undefined);
   const [current, setCurrent] = useState<string | undefined>(undefined);
+
+  const keepDialogsRef = useRef<Record<string, string>>({});
 
   const clearTimer = useCallback(() => {
     if (timerRef.current != null) {
@@ -95,7 +100,17 @@ export function useInitStackDialog({
 
   const openDialog = useCallback(function <P = AnyProps>(args: OpenDialogArgs<P>) {
     clearTimer();
-    const key = args.key == null || !args.key ? `dialog-${idRef.current++}` : args.key;
+    let persistent = false;
+    let key: string;
+    if (args.key == null || args.key.trim() === '') {
+      key = `dialog-${idRef.current++}`;
+    } else {
+      key = args.key;
+      persistent = true;
+    }
+
+    // const key = args.key == null || !args.key ? `dialog-${idRef.current++}` : args.key;
+    const holdCurrent = args.keepCurrent;
     const item = stack.find(it => it.key === key);
     let hasItem = item != null;
     if (item == null) {
@@ -103,6 +118,7 @@ export function useInitStackDialog({
         return [...(prevStack.length >= maxStack ? prevStack.slice(-(maxStack - 1)) : prevStack), {
           ...args as OpenDialogArgs<AnyProps>,
           key,
+          persistent,
           date   : new Date(),
           loading: false,
         }];
@@ -110,8 +126,13 @@ export function useInitStackDialog({
       hasItem = true;
     }
     if (hasItem) {
-      setOpen(true);
-      setCurrent(key);
+      setOpen(key);
+      setCurrent(prevKey => {
+        if (holdCurrent && prevKey != null && prevKey !== key) {
+          keepDialogsRef.current[prevKey] = key;
+        }
+        return key;
+      });
     }
   }, [clearTimer, maxStack, stack]);
 
@@ -126,32 +147,33 @@ export function useInitStackDialog({
     }
   }, [current]);
 
-  const closeDialog = useCallback((isDrop?: boolean | null) => {
-    let canClose = false;
-    let persistent = false;
+  const closeDialog = useCallback(() => {
+    let canDrop = false;
     let onClose: (() => void) | undefined = undefined;
     if (open) {
-      canClose = true;
       const item = stack.find(it => it.key === current);
       if (item != null) {
-        persistent = !!item.persistent;
+        canDrop = item.persistent;
         onClose = item.onClose;
       }
     }
 
-    if (!canClose) return;
-
-    if (isDrop == null) {
-      isDrop = !persistent;
+    let recoverKey: string | undefined;
+    for (const [originalKey, currentKey] of Object.entries(keepDialogsRef.current)) {
+      if (currentKey === current) {
+        recoverKey = originalKey;
+        delete (keepDialogsRef.current[originalKey]);
+        break;
+      }
     }
 
-    setOpen(false);
+    setOpen(recoverKey);
+    recoverKey != null && setCurrent(recoverKey);
+
     closeTimeout(() => {
       onClose && onClose();
-      setCurrent((prevKey) => {
-        isDrop && prevKey != null && setStack((prevStack) => prevStack.filter(it => it.key !== prevKey));
-        return undefined;
-      });
+      canDrop && setStack((prevStack) => prevStack.filter(it => it.key !== current));
+      recoverKey == null && setCurrent(recoverKey);
     }, closeDelay);
   }, [closeDelay, closeTimeout, current, open, stack]);
 
@@ -194,9 +216,18 @@ export function useInitStackDialog({
     });
   }, [config.cancelText, config.confirmText, openDialog]);
 
+  const shouldOpen = useCallback((key: string) => {
+    if (keepDialogsRef.current[key]) {
+      return true;
+    }
+    // return current === key && open;
+    return current === key && open === key;
+  }, [current, open]);
+
   return {
     options: { maxStack, closeDelay, maxWidth },
-    isOpen : open,
+    isOpen : open != null,
+    shouldOpen,
     stack,
     current,
     open   : openDialog,
