@@ -19,6 +19,11 @@
 
 - @mui-ext/dataview - 复杂的数据表视图
 
+## 文档
+
+- [@mui-ext/core](https://gitee.com/janpoem/mui-ext/tree/master/docs/core)
+- @mui-ext/hookform
+
 ## 类型使用约束
 
 1. 不要直接使用 `React.XXXX` ，而应该 `import { XXXX } from 'react'`

@@ -5,6 +5,8 @@
 
 mui 扩展的核心部分（公共组件与 hooks） 。
 
+[说明文档](https://gitee.com/janpoem/mui-ext/tree/master/docs/core)
+
 ## 组件索引
 
 - Loading - 可在任意项目本地化细化配置的公共 Loading 组件
