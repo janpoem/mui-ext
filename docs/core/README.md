@@ -1,5 +1,11 @@
 # @mui-ext/core 文档索引
 
+Utilities
+
+- [string](utils/string.md)
+- [number](utils/number.md)
+- [react](utils/react.md)
+
 基础组件
 
 - [Aspect](Aspect.md)
