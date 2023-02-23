@@ -7,6 +7,6 @@
 
 基础 hooks
 
-- [useAutoId](hooks.md#useAutoId)
-- [useClsx](hooks.md#useClsx)
-- [useSnackbarNotice](hooks.md#useSnackbarNotice)
+- [useAutoId](hooks.md#useautoid)
+- [useClsx](hooks.md#useclsx)
+- [useSnackbarNotice](hooks.md#usesnackbarnotice)

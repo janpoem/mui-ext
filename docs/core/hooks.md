@@ -43,7 +43,7 @@ declare function useSnackbarNotice(defaultOptions?: SnackbarOptions): {
 
 应用根节点挂载。
 
-```typescript jsx
+```tsx
 {/* 一般插入在 AppRoot 节点上 */}
 <SnackbarProvider maxSnack={6}>
   <DemoPage/>
@@ -52,7 +52,7 @@ declare function useSnackbarNotice(defaultOptions?: SnackbarOptions): {
 
 具体组件内调用
 
-```typescript jsx
+```tsx
 export function DemoPage() {
   const { error } = useSnackbarNotice();
 

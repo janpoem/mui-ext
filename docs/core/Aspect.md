@@ -35,7 +35,7 @@ type AspectProps = {
 
 ## Usage
 
-```typescript jsx
+```tsx
 <Aspect ratio={16/9} bg={'http://imageUrl'}>
   <div>
     Content

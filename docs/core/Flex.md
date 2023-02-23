@@ -67,7 +67,7 @@ type FlexProps = {
 
 ## Usage
 
-```typescript jsx
+```tsx
 <Flex gap={1} wrap={false} justify={'between'}>
   <FlexChild flex={'1 1 50%'}>
     50%
