@@ -26,6 +26,6 @@ stages:
         commands:
           - npm install pnpm @jsdevtools/npm-publish -g
           - pnpm install
-          - cd packages/core
+          - cd packages/hookform
           - rm -rf ./dist && pnpm build
           - test -f ./dist/index.js && npm-publish --token=${NPM_TOKEN} ./package.json
