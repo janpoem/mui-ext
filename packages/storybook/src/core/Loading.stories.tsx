@@ -38,6 +38,7 @@ export const Render = Template.bind({});
 Render.args = {
   text    : 'Render Loading...',
   render  : ({ children, ...props }) => (
+    // @ts-ignore Flex
     <Flex {...props} items={'center'} gap={1}>
       <CircularProgress size={20}/>
       {children}

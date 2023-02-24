@@ -20,7 +20,7 @@ function DefaultFormRender({ children, ...props }: FormRenderProps<ElementType>)
   const StyledFormTag = useMemo(() => styled(formTag)(() => ({ position: 'relative' })), [formTag]);
   return (
     <StyledFormTag {...props}>
-      <Backdrop open={loading}>{mountOrClone(loadingRender, { loading })}</Backdrop>
+      <Backdrop open={loading} sx={{ zIndex: 1000 }}>{mountOrClone(loadingRender, { loading })}</Backdrop>
       {children}
     </StyledFormTag>
   );
