@@ -1,6 +1,8 @@
 # @mui-ext/hookform
 
-[![version](https://img.shields.io/npm/v/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform) [![dw](https://img.shields.io/npm/dw/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform)
+[![Fork me on Gitee](https://gitee.com/janpoem/mui-ext/widgets/widget_6.svg)](https://gitee.com/janpoem/mui-ext)
+
+[![version](https://img.shields.io/npm/v/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform) [![dt](https://img.shields.io/npm/dw/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform)
 
 react-hook-form@mui
 

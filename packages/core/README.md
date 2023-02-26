@@ -1,7 +1,8 @@
 # @mui-ext/core
 
-[![version](https://img.shields.io/npm/v/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core)
-[![dw](https://img.shields.io/npm/dw/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core)
+[![Fork me on Gitee](https://gitee.com/janpoem/mui-ext/widgets/widget_6.svg)](https://gitee.com/janpoem/mui-ext)
+
+[![version](https://img.shields.io/npm/v/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core) [![dw](https://img.shields.io/npm/dt/@mui-ext/core?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/core)
 
 mui 扩展的核心部分（公共组件与 hooks） 。
 
