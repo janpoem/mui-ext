@@ -52,6 +52,7 @@ function HookFormStory(props: HookFormLoadingProps) {
               name="id"
               label="id"
               input={'text'}
+              hookErrors={{ required: '真的很有必要啊！' }}
               rules={{
                 required: true,
                 validate: (v) => {

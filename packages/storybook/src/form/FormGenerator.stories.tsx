@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormGenerator, MuiSelectOption } from '@mui-ext/hookform';
+import { FormFieldProps, FormGenerator, MuiSelectOption } from '@mui-ext/hookform';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
@@ -25,8 +25,8 @@ const typeOptions: MuiSelectOption[] = [
   { value: 15.55, text: '15.55' },
 ];
 
-const fields = [
-  { name: 'name', label: '名称', input: 'text', rules: { required: true } },
+const fields: FormFieldProps[] = [
+  { name: 'name', label: '名称', input: 'text', rules: { required: true }, hookErrors: { required: '不能没有你' } },
   { name: 'password', label: '密码', input: 'password', rules: { required: true } },
   { name: 'type', label: '类型', input: 'select', inputProps: { options: typeOptions } },
   { name: 'types', label: '类型多选', input: 'select', inputProps: { options: typeOptions, multiple: true } },

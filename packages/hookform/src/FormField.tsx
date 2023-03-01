@@ -10,6 +10,7 @@ import { isElement, isValidElementType } from 'react-is';
 import { FormFieldError } from './FormFieldError';
 import { getRegInput, isRegInput, UserInput } from './Input';
 import { Label } from './Label';
+import { HookErrors } from './types';
 import { useHookForm } from './useHookForm';
 
 type FieldEvent = {
@@ -47,6 +48,7 @@ export type FormFieldProps = {
   children?: ReactNode,
   inputProps?: InputProps | InputPropsCallback,
   placeholder?: string,
+  hookErrors?: Partial<HookErrors>,
   sx?: SxProps<Theme>,
 }
 
@@ -59,6 +61,7 @@ export function FormField({
   children,
   inputProps,
   placeholder,
+  hookErrors,
   sx,
 }: FormFieldProps) {
   const { autoId, control, customErrors, validateReturn } = useHookForm();
@@ -115,7 +118,7 @@ export function FormField({
           return <div>Unknown input type</div>;
         }}
       />
-      <FormFieldError field={name} tip={tip}/>
+      <FormFieldError field={name} tip={tip} hookErrors={hookErrors}/>
     </>
   );
 }
