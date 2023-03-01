@@ -1,6 +1,6 @@
 # @mui-ext/hookform
 
-[![Fork me on Gitee](https://gitee.com/janpoem/mui-ext/widgets/widget_6.svg)](https://gitee.com/janpoem/mui-ext)
+[![gitee-repo](https://img.shields.io/static/v1?label=Gitee&message=https://gitee.com/janpoem/mui-ext&color=555555&logo=gitee&style=for-the-badge&labelColor=C71D23)](https://gitee.com/janpoem/mui-ext)
 
 [![version](https://img.shields.io/npm/v/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform) [![dt](https://img.shields.io/npm/dw/@mui-ext/hookform?style=for-the-badge)](https://www.npmjs.com/package/@mui-ext/hookform)
 
