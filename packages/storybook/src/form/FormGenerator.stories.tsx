@@ -42,6 +42,9 @@ Basic.args = {
 
 export const Layout = Template.bind({});
 Layout.args = {
+  hookErrors     : {
+    required: 'aaaa',
+  },
   fields         : fields,
   gap            : '1em',
   layout         : [

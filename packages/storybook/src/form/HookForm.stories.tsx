@@ -45,7 +45,7 @@ function HookFormStory(props: HookFormLoadingProps) {
 
   return (
     <>
-      {ready && <HookForm<Example> onSubmit={(d) => console.log('data', d)}>
+      {ready && <HookForm<Example> hookErrors={{ required: '这个字段不能漏了啊' }} onSubmit={(d) => console.log('data', d)}>
         {({ setCustomError }) => (
           <Flex col>
             <FormField

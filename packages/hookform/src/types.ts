@@ -40,7 +40,7 @@ export type HookErrors = {
 export type HookFormConfig = {
   ns: string,
   lng?: string,
-  hookErrors: HookErrors,
+  hookErrors: Partial<HookErrors>,
   render: FormRender,
   loadingRender: FormLoading,
   submitText: ReactNode | ReactNode[],

@@ -36,7 +36,7 @@ export function useHookFormConfig(options: Partial<HookFormConfig>): HookFormCon
   return {
     ns             : options.ns || config.ns || 'form',
     lng            : options.lng || config.lng || undefined,
-    hookErrors     : useHookFormErrors(options.hookErrors),
+    hookErrors     : { ...defaultHookErrors(), ...config.hookErrors, ...options.hookErrors },
     render         : options.render || config.render || DefaultFormRender,
     loadingRender  : options.loadingRender || config.loadingRender || (() => <CircularProgress/>),
     submitText     : options.submitText || config.submitText || 'Submit',

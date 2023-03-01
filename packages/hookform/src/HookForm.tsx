@@ -20,7 +20,7 @@ import {
 import { useHookFormConfig } from './config';
 import { MuiFormHelperProps } from './FormFieldError';
 import { MuiInputSharedProps } from './Input';
-import { FormLoading, HookFormContext, HookFormCustomError, HookFormCustomErrors } from './types';
+import { FormLoading, HookErrors, HookFormContext, HookFormCustomError, HookFormCustomErrors } from './types';
 import { validateReturn } from './utils';
 
 type SubmitResult = void | boolean
@@ -42,6 +42,8 @@ export type HookFormProps<T extends FieldValues = FieldValues> = {
   //
   inputProps?: MuiInputSharedProps,
   formHelperProps?: MuiFormHelperProps,
+  //
+  hookErrors?: Partial<HookErrors>,
 } & UseFormProps<T>
 
 function HookFormGeneric<T extends FieldValues = FieldValues>({
@@ -57,6 +59,8 @@ function HookFormGeneric<T extends FieldValues = FieldValues>({
   onInvalid,
   inputProps,
   formHelperProps,
+  //
+  hookErrors,
   // hook-form props
   mode = 'all',
   reValidateMode = 'onChange',
@@ -71,7 +75,7 @@ function HookFormGeneric<T extends FieldValues = FieldValues>({
   delayError,
   ...props
 }: HookFormProps<T>, ref: ForwardedRef<HTMLDivElement>) {
-  const config = useHookFormConfig({ ns, lng, loadingRender, inputProps, formHelperProps, formTag });
+  const config = useHookFormConfig({ ns, lng, loadingRender, inputProps, formHelperProps, formTag, hookErrors });
   const { render: Form } = config;
   const [loading, setLoading] = useState(false);
 
