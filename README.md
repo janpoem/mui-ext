@@ -2,7 +2,7 @@
 
 [![gitee-repo](https://img.shields.io/static/v1?label=Gitee&message=https://gitee.com/janpoem/mui-ext&color=555555&logo=gitee&style=for-the-badge&labelColor=C71D23)](https://gitee.com/janpoem/mui-ext)
 
-该库是针对 [@mui](https://mui.com/) 为基础的扩展库。
+该库是针对 [@mui](https://mui.com/) 的扩展库。
 
 以现行常见的 React UI 库，经过我长期大量的观察，最终选定以 mui 作为基础，基于几个原因：
 
