@@ -1,3 +1,4 @@
+import { ComponentOrElement } from '@mui-ext/core';
 import { SxProps, Theme } from '@mui/material';
 import React, { cloneElement, createElement, ReactNode, useCallback, useMemo } from 'react';
 import {
@@ -7,7 +8,7 @@ import {
 } from 'react-hook-form';
 import { Message } from 'react-hook-form/dist/types/errors';
 import { isElement, isValidElementType } from 'react-is';
-import { FormFieldError } from './FormFieldError';
+import { FormFieldError, FormFieldErrorRenderProps } from './FormFieldError';
 import { getRegInput, isRegInput, UserInput } from './Input';
 import { Label } from './Label';
 import { HookErrors } from './types';
@@ -49,6 +50,7 @@ export type FormFieldProps = {
   inputProps?: InputProps | InputPropsCallback,
   placeholder?: string,
   hookErrors?: Partial<HookErrors>,
+  render?: ComponentOrElement<FormFieldErrorRenderProps>,
   sx?: SxProps<Theme>,
 }
 
@@ -62,6 +64,7 @@ export function FormField({
   inputProps,
   placeholder,
   hookErrors,
+  render,
   sx,
 }: FormFieldProps) {
   const { autoId, control, customErrors, validateReturn } = useHookForm();
@@ -118,7 +121,7 @@ export function FormField({
           return <div>Unknown input type</div>;
         }}
       />
-      <FormFieldError field={name} tip={tip} hookErrors={hookErrors}/>
+      <FormFieldError field={name} tip={tip} hookErrors={hookErrors} render={render}/>
     </>
   );
 }

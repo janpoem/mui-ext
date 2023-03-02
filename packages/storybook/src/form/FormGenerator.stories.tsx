@@ -1,3 +1,4 @@
+import { Flex, FlexChild } from '@mui-ext/core';
 import * as React from 'react';
 import { FormFieldProps, FormGenerator, MuiSelectOption } from '@mui-ext/hookform';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
@@ -26,7 +27,22 @@ const typeOptions: MuiSelectOption[] = [
 ];
 
 const fields: FormFieldProps[] = [
-  { name: 'name', label: '名称', input: 'text', rules: { required: true }, hookErrors: { required: '不能没有你' } },
+  {
+    name      : 'name',
+    label     : '名称2',
+    input     : 'text',
+    rules     : { required: true },
+    hookErrors: { required: '不能没有你' },
+    tip       : 'aaaa',
+    render    : function NameTipRender({ children }) {
+      return (
+        <Flex justify={'between'} gap={1} items="center">
+          <FlexChild>{children}</FlexChild>
+          <FlexChild>Hello World</FlexChild>
+        </Flex>
+      );
+    },
+  },
   { name: 'password', label: '密码', input: 'password', rules: { required: true } },
   { name: 'type', label: '类型', input: 'select', inputProps: { options: typeOptions } },
   { name: 'types', label: '类型多选', input: 'select', inputProps: { options: typeOptions, multiple: true } },

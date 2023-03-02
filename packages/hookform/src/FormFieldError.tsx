@@ -1,8 +1,10 @@
+import { ComponentOrElement, mountOrClone } from '@mui-ext/core';
 import { FormHelperText, FormHelperTextProps } from '@mui/material';
 import React, { ReactNode, useMemo } from 'react';
 import { FieldError, get } from 'react-hook-form';
 import { HookErrors } from './types';
 import { useHookForm } from './useHookForm';
+import { isFieldError } from './utils';
 
 export type MuiFormHelperProps = {
   margin?: FormHelperTextProps['margin'],
@@ -10,16 +12,28 @@ export type MuiFormHelperProps = {
   sx?: FormHelperTextProps['sx']
 }
 
+export type FormFieldErrorRenderProps = {
+  children?: ReactNode | ReactNode[],
+  field: string,
+  error?: FieldError,
+  message?: ReactNode | ReactNode[],
+}
+
 export type FieldErrorProps = {
   field: string,
   tip?: ReactNode | ReactNode[],
   sx?: FormHelperTextProps['sx'],
   hookErrors?: Partial<HookErrors>,
+  render?: ComponentOrElement<FormFieldErrorRenderProps>,
 }
 
-const isFieldError = (err: unknown): err is FieldError => err != null && typeof err === 'object' && !!(err as Record<string, unknown>).type;
-
-export function FormFieldError({ field: fieldName, tip, sx, hookErrors: fieldHookErrors }: FieldErrorProps) {
+export function FormFieldError({
+  field: fieldName,
+  tip,
+  sx,
+  hookErrors: fieldHookErrors,
+  render,
+}: FieldErrorProps) {
   const {
     config: { hookErrors, formHelperProps },
     control,
@@ -43,15 +57,16 @@ export function FormFieldError({ field: fieldName, tip, sx, hookErrors: fieldHoo
 
   const __sx = { ..._sx, ...sx };
 
-  if (!message) return null;
+  if (!message && render == null) return null;
 
-  return (
-    <FormHelperText
-      {...props}
-      sx={__sx}
-      error={isError}
-    >
-      {message}
-    </FormHelperText>
+  const children = (
+    <FormHelperText {...props} sx={__sx} error={isError}>{message}</FormHelperText>
   );
+
+  return render != null ? mountOrClone(render, {
+    field  : fieldName,
+    error  : isError ? error as FieldError : undefined,
+    message: message,
+    children,
+  }) : children;
 }
