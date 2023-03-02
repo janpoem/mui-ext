@@ -1,6 +1,6 @@
 {
   "name": "@mui-ext/hookform",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "react-hook-form @ Material UI (mui)",
   "keywords": ["mui-ext", "mui", "react-hook-form", "hookform"],
   "main": "dist/index.js",
