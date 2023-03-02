@@ -6,6 +6,7 @@ importers:
     specifiers:
       '@emotion/react': ^11
       '@emotion/styled': ^11
+      '@mui-ext/core': 0.0.10
       '@mui/icons-material': ^5
       '@mui/material': ^5
       '@mui/styles': ^5
@@ -45,6 +46,7 @@ importers:
     dependencies:
       '@emotion/react': 11.10.5_kzbn2opkn2327fwg5yzwzya5o4
       '@emotion/styled': 11.10.5_qvatmowesywn4ye42qoh247szu
+      '@mui-ext/core': link:packages/core
       '@mui/icons-material': 5.10.16_x5g5t372wpbxfzkqxtxktxetsq
       '@mui/material': 5.10.17_lskpmcsdi7ipu6qpuapyu56ihm
       '@mui/styles': 5.10.16_kzbn2opkn2327fwg5yzwzya5o4

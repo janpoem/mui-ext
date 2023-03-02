@@ -29,7 +29,8 @@
     "@mui/material": "^5",
     "@mui/styles": "^5",
     "notistack": "^2",
-    "react-hook-form": "^7"
+    "react-hook-form": "^7",
+    "@mui-ext/core": "0.0.10"
   },
   "devDependencies": {
     "@types/node": "^16",
