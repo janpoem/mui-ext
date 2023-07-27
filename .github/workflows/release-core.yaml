@@ -47,8 +47,8 @@ jobs:
         working-directory: ./packages/core
         run: pnpm build
 
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          strategy: all
-
+      - name: Npm Publish
+        working-directory: ./packages/core
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
