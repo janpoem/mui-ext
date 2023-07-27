@@ -43,9 +43,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - run: cd packages/core
-
-      - name: Build
+      - name: Build packages/core
+        working-directory: ./packages/core
         run: pnpm build
 
       - uses: JS-DevTools/npm-publish@v1
