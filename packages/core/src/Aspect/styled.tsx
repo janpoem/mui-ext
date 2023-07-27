@@ -14,7 +14,7 @@ export type AspectOuterProps = {
 }
 
 export const AspectOuter: StyledComponent<HtmlComponentProps<AspectOuterProps>> = styled('div', {
-  shouldForwardProp: (prop) => !['ratio', 'bg', 'bgColor', 'bgPosition', 'bgSize', 'bgRepeat'].includes(prop as string),
+  shouldForwardProp: (prop) => !['ratio', 'bg', 'bgColor', 'bgPosition', 'bgSize', 'bgRepeat', 'sx'].includes(prop as string),
 })<AspectOuterProps>(({
   ratio,
   bg,

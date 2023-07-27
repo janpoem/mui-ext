@@ -1,18 +1,19 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, ForwardedRef, forwardRef } from 'react';
 import { useClsx } from '../hooks';
 import { MuiComponentProps } from '../utils';
 import { AspectInner, AspectInnerProps, AspectOuter, AspectOuterProps } from './styled';
 
 export type AspectProps = MuiComponentProps<AspectOuterProps & AspectInnerProps & ComponentProps<'div'>>
 
-export function Aspect({
+export const Aspect = forwardRef(function Aspect({
   children,
   className,
   ...rest
-}: AspectProps) {
+}: AspectProps, ref: ForwardedRef<HTMLDivElement>) {
   return (
     <AspectOuter className={useClsx('aspect-outer', className)} {...rest}>
-      {children ? <AspectInner className={'inner'}>{children}</AspectInner> : null}
+      {/* @ts-ignore ref */}
+      <AspectInner ref={ref} className={'inner'}>{children}</AspectInner>
     </AspectOuter>
   );
-}
+})

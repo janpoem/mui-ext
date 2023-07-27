@@ -5,7 +5,7 @@ export type RatioValue = `${number}/${number}` | number | undefined | null;
 
 export function useRatio(value: RatioValue): number {
   return useMemo(() => {
-    if (value == null) return 1;
+    if (value == null || value <= 0) return 1;
     if (typeof value === 'number') return value;
     if (typeof value === 'string') {
       const match = value.trim().match(/^(\d+)[\\/](\d+)$/);
@@ -21,12 +21,6 @@ export function useRatio(value: RatioValue): number {
           return 1;
         }
       }
-      // try {
-      //   const [v1, v2] = value.trim().split('/');
-      //   return filterNumeric(v1) / filterNumeric(v2);
-      // } catch (e) {
-      //   return 1;
-      // }
     }
     return 1;
   }, [value]);
